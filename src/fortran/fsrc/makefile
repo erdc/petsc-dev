@@ -1,0 +1,21 @@
+# $Id: makefile,v 1.1 2001/09/04 17:59:04 balay Exp $ 
+
+ALL: lib
+SPECIALFASTLIB = yes
+specialfastlib: lib
+
+CFLAGS   =
+FFLAGS   =
+SOURCEC  =
+SOURCEF  = somefort.F
+SOURCEH  =
+OBJSC    =
+OBJSF    = somefort.o
+LIBBASE  = libpetscfortran
+MANSEC   = Sys
+LOCDIR   = src/fortran/fsrc/
+
+include ${PETSC_DIR}/bmake/common/base
+include ${PETSC_DIR}/bmake/common/test
+
+

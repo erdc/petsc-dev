@@ -1,0 +1,37 @@
+# $Id: rules,v 1.29 2001/08/22 17:58:22 balay Exp $ 
+
+libc:
+	for i in ${OBJSC}; do ${OMAKE} BOPT=${BOPT} LIBNAME=${LIBNAME} libmember LIBMEMBER=$$i ; done
+
+libf:
+	for i in ${OBJSF}; do ${OMAKE} BOPT=${BOPT} libmember LIBMEMBER=$$i ; done
+
+libmember:    ${LIBNAME}(${LIBMEMBER})
+#########
+
+# This F.f rule ensures that the old *.f files are removed.
+#
+.F.f:
+	-${RM} $*.f __$*.c
+	-${CP} $*.F __$*.c
+	-${CC} ${FCPPFLAGS} -E  __$*.c | grep -v '^ *#' > $*.f
+	-${RM} __$*.c
+
+.F.o:
+	-${RM} $*.f __$*.c
+	-${CP} $*.F __$*.c
+	-${CC} ${FCPPFLAGS} -E  __$*.c | grep -v '^ *#' > $*.f
+	-${FC} -c ${FOPTFLAGS} ${FFLAGS} $*.f
+	-${RM} $*.f __$*.c
+
+.F.a:
+	-${RM} $*.f __$*.c
+	-${CP} $*.F __$*.c
+	-${CC} ${FCPPFLAGS} -E  __$*.c | grep -v '^ *#' > $*.f
+	-${FC} -c ${FOPTFLAGS} ${FFLAGS} $*.f
+	-${AR} cr ${LIBNAME} $*.o
+	-${RM} $*.f __$*.c
+
+shared:
+
+oshared:

@@ -1,0 +1,45 @@
+#! /bin/csh
+# $Id: builddistlite,v 1.6 2001/04/11 15:01:18 balay Exp $ 
+
+# 
+#  takes a full distribution tar file, and creates a 'lite' distribution
+#
+if ($#argv == 1) then
+  set fulldistfile=$1
+  echo "using $fulldistfile as the full distribution file"
+else
+   echo "usage: builddistlite fulldist.tar.gz"
+   exit 0
+endif
+
+set tmpdir=/sandbox/petsc/tmp
+/bin/rm -rf $tmpdir/petsc-lite
+mkdir -p $tmpdir/petsc-lite
+cd $tmpdir/petsc-lite
+
+gunzip -c $fulldistfile | tar -xf -
+
+/bin/rm -rf $tmpdir/petsc-lite/petsc*/docs
+
+# Update readme.html
+cd $tmpdir/petsc-lite/petsc*
+cat readme.html | sed s@href=\"docs@href=\"http://www.mcs.anl.gov/petsc/docs@g | \
+    sed s@petscversion.h.html@petscversion.h@g > readme.bak
+
+# remove all the .html files
+find $tmpdir/petsc-lite -type f -name "*.html" -exec rm {} \;
+
+# Complete updating readme.html
+cd $tmpdir/petsc-lite/petsc*
+/bin/mv readme.bak readme.html
+
+# Tar up the remaning files to create the 'lite' distribution
+cd $tmpdir/petsc-lite
+/bin/tar -cf  $tmpdir/petsc-lite.tar petsc*
+gzip -f $tmpdir/petsc-lite.tar
+/bin/cp  $tmpdir/petsc-lite.tar.gz ~/
+
+
+# Clean up
+/bin/rm -rf $tmpdir/petsc-lite
+

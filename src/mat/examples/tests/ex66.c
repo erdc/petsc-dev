@@ -1,0 +1,28 @@
+/*$Id: ex66.c,v 1.14 2001/04/10 19:35:44 bsmith Exp $*/
+
+static char help[] = "Reads in rectangular matrix from disk, stored from ex65.c\n\n";
+
+#include "petscmat.h"
+
+#undef __FUNCT__
+#define __FUNCT__ "main"
+int main(int argc,char **args)
+{
+  int         ierr;
+  Mat         A;
+  PetscViewer fd;
+
+  PetscInitialize(&argc,&args,(char *)0,help);
+
+  /* Read matrix and RHS */
+  ierr = PetscViewerBinaryOpen(PETSC_COMM_WORLD,"rect",PETSC_BINARY_RDONLY,&fd);CHKERRQ(ierr);
+  ierr = MatLoad(fd,MATSEQAIJ,&A);CHKERRQ(ierr);
+  ierr = PetscViewerDestroy(fd);CHKERRQ(ierr);
+
+  /* Free data structures */
+  ierr = MatDestroy(A);CHKERRQ(ierr);
+
+  ierr = PetscFinalize();CHKERRQ(ierr);
+  return 0;
+}
+

@@ -1,0 +1,593 @@
+/*$Id: str.c,v 1.51 2001/04/05 21:06:52 balay Exp $*/
+/*
+    We define the string operations here. The reason we just do not use 
+  the standard string routines in the PETSc code is that on some machines 
+  they are broken or have the wrong prototypes.
+
+*/
+#include "petsc.h"                   /*I  "petsc.h"   I*/
+#include "petscsys.h"
+#if defined(PETSC_HAVE_STRING_H)
+#include <string.h>
+#endif
+#if defined(PETSC_HAVE_STRINGS_H)
+#include <strings.h>
+#endif
+#include "petscfix.h"
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrlen"
+/*@C
+   PetscStrlen - Gets length of a string
+
+   Not Collective
+
+   Input Parameters:
+.  s - pointer to string
+
+   Output Parameter:
+.  len - length in bytes
+
+   Level: intermediate
+
+   Note:
+   This routine is analogous to strlen().
+
+   Null string returns a length of zero
+
+  Concepts: string length
+  
+@*/
+int PetscStrlen(const char s[],int *len)
+{
+  PetscFunctionBegin;
+  if (!s) {
+    *len = 0;
+  } else {
+    *len = strlen(s);
+  }
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrallocpy"
+/*@C
+   PetscStrallocpy - Allocates space to hold a copy of a string then copies the string
+
+   Not Collective
+
+   Input Parameters:
+.  s - pointer to string
+
+   Output Parameter:
+.  t - the copied string
+
+   Level: intermediate
+
+   Note:
+      Null string returns a new null string
+
+  Concepts: string copy
+  
+@*/
+int PetscStrallocpy(const char s[],char **t)
+{
+  int ierr,len;
+
+  PetscFunctionBegin;
+  if (s) {
+    ierr = PetscStrlen(s,&len);CHKERRQ(ierr);
+    ierr = PetscMalloc((1+len)*sizeof(char),t);CHKERRQ(ierr);
+    ierr = PetscStrcpy(*t,s);CHKERRQ(ierr);
+  } else {
+    *t = 0;
+  }
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrcpy"
+/*@C
+   PetscStrcpy - Copies a string
+
+   Not Collective
+
+   Input Parameters:
+.  s - pointer to string
+
+   Output Parameter:
+.  t - the copied string
+
+   Level: intermediate
+
+   Note:
+     Null string returns a string starting with zero
+
+  Concepts: string copy
+  
+.seealso: PetscStrncpy(), PetscStrcat(), PetscStrncat()
+
+@*/
+int PetscStrcpy(char s[],const char t[])
+{
+  PetscFunctionBegin;
+  if (t && !s) {
+    SETERRQ(1,"Trying to copy string into null pointer");
+  }
+  if (t) {strcpy(s,t);}
+  else {s[0] = 0;}
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrncpy"
+/*@C
+   PetscStrncpy - Copies a string up to a certain length
+
+   Not Collective
+
+   Input Parameters:
++  s - pointer to string
+-  n - the length to copy
+
+   Output Parameter:
+.  t - the copied string
+
+   Level: intermediate
+
+   Note:
+     Null string returns a string starting with zero
+
+  Concepts: string copy
+
+.seealso: PetscStrcpy(), PetscStrcat(), PetscStrncat()
+  
+@*/
+int PetscStrncpy(char s[],const char t[],int n)
+{
+  PetscFunctionBegin;
+  strncpy(s,t,n);
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrcat"
+/*@C
+   PetscStrcat - Concatenates a string onto a given string
+
+   Not Collective
+
+   Input Parameters:
++  s - pointer to string to be added to end
+-  t - string to be added to
+
+   Level: intermediate
+
+  Concepts: string copy
+
+.seealso: PetscStrcpy(), PetscStrncpy(), PetscStrncat()
+  
+@*/
+int PetscStrcat(char s[],const char t[])
+{
+  PetscFunctionBegin;
+  strcat(s,t);
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrncat"
+/*@C
+   PetscStrncat - Concatenates a string onto a given string, up to a given length
+
+   Not Collective
+
+   Input Parameters:
++  s - pointer to string to be added to end
+.  t - string to be added to
+.  n - maximum length to copy 
+
+   Level: intermediate
+
+  Concepts: string copy
+
+.seealso: PetscStrcpy(), PetscStrncpy(), PetscStrcat()
+  
+@*/
+int PetscStrncat(char s[],const char t[],int n)
+{
+  PetscFunctionBegin;
+  strncat(s,t,n);
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrcmp"
+/*@C
+   PetscStrcmp - Compares two strings,
+
+   Not Collective
+
+   Input Parameters:
++  a - pointer to string first string
+-  b - pointer to second string
+
+   Output Parameter:
+.  flg - if the two strings are equal
+
+   Level: intermediate
+
+.seealso: PetscStrgrt(), PetscStrncmp(), PetscStrcasecmp()
+
+@*/
+int PetscStrcmp(const char a[],const char b[],PetscTruth *flg)
+{
+  int c;
+
+  PetscFunctionBegin;
+  if (!a && !b) {
+    *flg = PETSC_TRUE;
+  } else if (!a || !b) {
+    *flg = PETSC_FALSE;
+  } else {
+    c = strcmp(a,b);
+    if (c) *flg = PETSC_FALSE;
+    else   *flg = PETSC_TRUE;
+  }
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrgrt"
+/*@C
+   PetscStrgrt - If first string is greater than the second
+
+   Not Collective
+
+   Input Parameters:
++  a - pointer to string first string
+-  b - pointer to second string
+
+   Output Parameter:
+.  flg - if the first string is greater
+
+   Notes:
+    Null arguments are ok, a null string is considered smaller than 
+    all others
+
+   Level: intermediate
+
+.seealso: PetscStrcmp(), PetscStrncmp(), PetscStrcasecmp()
+
+@*/
+int PetscStrgrt(const char a[],const char b[],PetscTruth *t)
+{
+  int c;
+
+  PetscFunctionBegin;
+  if (!a && !b) {
+    *t = PETSC_FALSE;
+  } else if (a && !b) {
+    *t = PETSC_TRUE; 
+  } else if (!a && b) {
+    *t = PETSC_FALSE; 
+  } else {
+    c = strcmp(a,b);
+    if (c > 0) *t = PETSC_TRUE;
+    else       *t = PETSC_FALSE;
+  }
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrcasecmp"
+/*@C
+   PetscStrcasecmp - Returns true if the two strings are the same
+     except possibly for case.
+
+   Not Collective
+
+   Input Parameters:
++  a - pointer to string first string
+-  b - pointer to second string
+
+   Output Parameter:
+.  flg - if the two strings are the same
+
+   Notes:
+    Null arguments are ok
+
+   Level: intermediate
+
+.seealso: PetscStrcmp(), PetscStrncmp(), PetscStrgrt()
+
+@*/
+int PetscStrcasecmp(const char a[],const char b[],PetscTruth *t)
+{
+  int c;
+
+  PetscFunctionBegin;
+  if (!a && !b) c = 0;
+  else if (!a || !b) c = 1;
+#if defined (PARCH_win32)
+  else c = stricmp(a,b);
+#else
+  else c = strcasecmp(a,b);
+#endif
+  if (!c) *t = PETSC_TRUE;
+  else    *t = PETSC_FALSE;
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrncmp"
+/*@C
+   PetscStrcmp - Compares two strings, up to a certain length
+
+   Not Collective
+
+   Input Parameters:
++  a - pointer to string first string
+.  b - pointer to second string
+-  n - length to compare up to
+
+   Output Parameter:
+.  t - if the two strings are equal
+
+   Level: intermediate
+
+.seealso: PetscStrgrt(), PetscStrncmp(), PetscStrcasecmp()
+
+@*/
+int PetscStrncmp(const char a[],const char b[],int n,PetscTruth *t)
+{
+  int c;
+
+  PetscFunctionBegin;
+  c = strncmp(a,b,n);
+  if (!c) *t = PETSC_TRUE;
+  else    *t = PETSC_FALSE;
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrchr"
+/*@C
+   PetscStrchr - Locates first occurance of a character in a string
+
+   Not Collective
+
+   Input Parameters:
++  a - pointer to string first string
+-  b - character
+
+   Output Parameter:
+.  c - location of occurance, PETSC_NULL if not found
+
+   Level: intermediate
+
+@*/
+int PetscStrchr(const char a[],char b,char **c)
+{
+  PetscFunctionBegin;
+  *c = (char *)strchr(a,b);
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrrchr"
+/*@C
+   PetscStrrchr - Locates one location past the first occurance of a character in a string,
+      if the character is not found then returns entire string
+
+   Not Collective
+
+   Input Parameters:
++  a - pointer to string first string
+-  b - character
+
+   Output Parameter:
+.  tmp - location of occurance, a if not found
+
+   Level: intermediate
+
+@*/
+int PetscStrrchr(const char a[],char b,char **tmp)
+{
+  PetscFunctionBegin;
+  *tmp = (char *)strrchr(a,b);
+  if (!*tmp) *tmp = (char*)a; else *tmp = *tmp + 1;
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrtolower"
+/*@C
+   PetscStrtolower - Converts string to lower case
+
+   Not Collective
+
+   Input Parameters:
+.  a - pointer to string
+
+   Level: intermediate
+
+@*/
+int PetscStrtolower(char a[])
+{
+  PetscFunctionBegin;
+  while (*a) {
+    if (*a >= 'A' && *a <= 'Z') *a += 'a' - 'A';
+    a++;
+  }
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrtok"
+/*@C
+   PetscStrtok - Locates next "token" in a string
+
+   Not Collective
+
+   Input Parameters:
++  a - pointer to string
+-  b - token
+
+   Output Parameter:
+.  result - location of occurance, a if not found
+
+   Notes:
+
+     This version is different from the system version in that
+  it allows you to pass a read-only string into the function.
+  A copy is made that is then passed into the system strtok() 
+  routine.
+
+    Limitation: 
+  String must be less than or equal 1024 bytes in length, otherwise
+  it will bleed memory.
+
+   Level: intermediate
+
+@*/
+int PetscStrtok(const char a[],const char b[],char **result)
+{
+  static char init[1024];
+  char        *ptr=0;
+  int         ierr,len;
+         
+
+  PetscFunctionBegin;
+  if (a) {
+    ierr = PetscStrlen(a,&len);CHKERRQ(ierr);
+    if (len > 1023) {
+      ierr = PetscMalloc((len+1)*sizeof(char),&ptr);CHKERRQ(ierr);
+    } else {
+      ptr = init;
+    }
+    ierr = PetscStrncpy(ptr,a,len+1);CHKERRQ(ierr);
+  }
+  *result = strtok(ptr,b);
+  PetscFunctionReturn(0);
+}
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrstr"
+/*@C
+   PetscStrstr - Locates first occurance of string in another string
+
+   Not Collective
+
+   Input Parameters:
++  a - pointer to string
+-  b - string to find
+
+   Output Parameter:
+.  tmp - location of occurance
+
+   Level: intermediate
+
+@*/
+int PetscStrstr(const char a[],const char b[],char **tmp)
+{
+  PetscFunctionBegin;
+  *tmp = (char *)strstr(a,b);
+  PetscFunctionReturn(0);
+}
+
+
+#undef __FUNCT__  
+#define __FUNCT__ "PetscStrreplace"
+/*@C
+   PetscStrreplace - Replaces substrings in string with other substrings
+
+   Not Collective
+
+   Input Parameters:
++   comm - MPI_Comm of processors that are processing the string
+.   a - the string to look in
+.   b - the resulting copy of a with replaced strings
+-   len - the length of b
+
+   Notes:
+      Replaces   ${PETSC_ARCH},${BOPT},${PETSC_DIR},${PETSC_LIB_DIR},${DISPLAY},
+      ${HOMEDIRECTORY},${WORKINGDIRECTORY},${USERNAME} with appropriate values
+      as well as any environmental variables.
+   
+   Level: intermediate
+
+@*/
+int PetscStrreplace(MPI_Comm comm,const char a[],char *b,int len)
+{
+  int        ierr,i = 0,l,l1,l2,l3;
+  char       *work,*par,*epar,env[256];
+  char       *s[] = {"${PETSC_ARCH}","${BOPT}","${PETSC_DIR}","${PETSC_LIB_DIR}","${DISPLAY}","${HOMEDIRECTORY}","${WORKINGDIRECTORY}","${USERNAME}",0};
+  char       *r[] = {PETSC_ARCH,PETSC_BOPT,PETSC_DIR,PETSC_LIB_DIR,0,0,0,0,0};
+  PetscTruth flag;
+
+  PetscFunctionBegin;
+  if (len <= 0) SETERRQ(1,"Length of b must be greater than 0");
+  if (!a || !b) SETERRQ(1,"a and b strings must be nonnull");
+  ierr = PetscMalloc(len*sizeof(char*),&work);CHKERRQ(ierr);
+
+  /* get values for replaced variables */
+  ierr = PetscMalloc(256*sizeof(char),&r[4]);CHKERRQ(ierr);
+  ierr = PetscMalloc(256*sizeof(char),&r[5]);CHKERRQ(ierr);
+  ierr = PetscMalloc(256*sizeof(char),&r[6]);CHKERRQ(ierr);
+  ierr = PetscMalloc(256*sizeof(char),&r[7]);CHKERRQ(ierr);
+  ierr = PetscGetDisplay(r[4],256);CHKERRQ(ierr);
+  ierr = PetscGetHomeDirectory(r[5],256);CHKERRQ(ierr);
+  ierr = PetscGetWorkingDirectory(r[6],256);CHKERRQ(ierr);
+  ierr = PetscGetUserName(r[7],256);CHKERRQ(ierr);
+
+  /* replace the requested strings */
+  ierr = PetscStrncpy(b,a,len);CHKERRQ(ierr);  
+  while (s[i]) {
+    ierr = PetscStrlen(s[i],&l);CHKERRQ(ierr);
+    ierr = PetscStrstr(b,s[i],&par);CHKERRQ(ierr);
+    while (par) {
+      *par  =  0;
+      par  += l;
+
+      ierr = PetscStrlen(b,&l1);CHKERRQ(ierr);
+      ierr = PetscStrlen(r[i],&l2);CHKERRQ(ierr);
+      ierr = PetscStrlen(par,&l3);CHKERRQ(ierr);
+      if (l1 + l2 + l3 >= len) {
+        SETERRQ(1,"b len is not long enough to hold new values");
+      }
+      ierr  = PetscStrcpy(work,b);CHKERRQ(ierr);
+      ierr  = PetscStrcat(work,r[i]);CHKERRQ(ierr);
+      ierr  = PetscStrcat(work,par);CHKERRQ(ierr);
+      ierr  = PetscStrncpy(b,work,len);CHKERRQ(ierr);
+      ierr  = PetscStrstr(b,s[i],&par);CHKERRQ(ierr);
+    }
+    i++;
+  }
+  ierr = PetscFree(r[4]);CHKERRQ(ierr);
+  ierr = PetscFree(r[5]);CHKERRQ(ierr);
+  ierr = PetscFree(r[6]);CHKERRQ(ierr);
+  ierr = PetscFree(r[7]);CHKERRQ(ierr);
+
+  /* look for any other ${xxx} strings to replace from environmental variables */
+  ierr = PetscStrstr(b,"${",&par);CHKERRQ(ierr);
+  while (par) {
+    *par = 0;
+    par += 2;
+    ierr  = PetscStrcpy(work,b);CHKERRQ(ierr);
+    ierr = PetscStrstr(par,"}",&epar);CHKERRQ(ierr);
+    *epar = 0;
+    epar += 1;
+    ierr = PetscOptionsGetenv(comm,par,env,256,&flag);CHKERRQ(ierr);
+    if (!flag) {
+      SETERRQ1(1,"Substitution string ${%s} not found as environmental variable",par);
+    }
+    ierr = PetscStrcat(work,env);CHKERRQ(ierr);
+    ierr = PetscStrcat(work,epar);CHKERRQ(ierr);
+    ierr = PetscStrcpy(b,work);CHKERRQ(ierr);
+    ierr = PetscStrstr(b,"${",&par);CHKERRQ(ierr);
+  }
+  ierr = PetscFree(work);CHKERRQ(ierr);
+
+  PetscFunctionReturn(0);
+}

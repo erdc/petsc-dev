@@ -1,0 +1,110 @@
+/*$Id: ex47.c,v 1.24 2001/08/07 21:30:08 bsmith Exp $*/
+
+static char help[] = "Tests the various routines in MatBAIJ format.\n\
+Input arguments are:\n\
+  -f <input_file> : file to load.  For a 5X5 example of the 5-pt. stencil,\n\
+                    use the file petsc/src/mat/examples/matbinary.ex\n\n";
+
+#include "petscmat.h"
+
+#undef __FUNCT__
+#define __FUNCT__ "main"
+int main(int argc,char **args)
+{
+  Mat         A,B,C;
+  PetscViewer va,vb,vc;
+  Vec         x,y;
+  int         ierr,i,j,row,m,n,ncols1,ncols2,*cols1,*cols2,ct,m2,n2;
+  char        file[128];
+  PetscTruth  tflg;
+  PetscScalar rval,*vals1,*vals2;
+  PetscReal   norm1,norm2,rnorm;
+  PetscRandom r;
+
+
+  PetscInitialize(&argc,&args,(char *)0,help);
+#if defined(PETSC_USE_COMPLEX)
+  SETERRQ(1,"This example does not work with complex numbers");
+#else
+  
+  ierr = PetscOptionsGetString(PETSC_NULL,"-f",file,127,PETSC_NULL);CHKERRQ(ierr);
+
+  /* Load the matrix as AIJ format */
+  ierr = PetscViewerBinaryOpen(PETSC_COMM_WORLD,file,PETSC_BINARY_RDONLY,&va);CHKERRQ(ierr);
+  ierr = MatLoad(va,MATSEQAIJ,&A);CHKERRQ(ierr);
+  ierr = PetscViewerDestroy(va);CHKERRQ(ierr);
+
+  /* Load the matrix as BAIJ format */
+  ierr = PetscViewerBinaryOpen(PETSC_COMM_WORLD,file,PETSC_BINARY_RDONLY,&vb);CHKERRQ(ierr);
+  ierr = MatLoad(vb,MATSEQBAIJ,&B);CHKERRQ(ierr);
+  ierr = PetscViewerDestroy(vb);CHKERRQ(ierr);
+
+  /* Load the matrix as BAIJ format */
+  ierr = PetscViewerBinaryOpen(PETSC_COMM_WORLD,file,PETSC_BINARY_RDONLY,&vc);CHKERRQ(ierr);
+  ierr = MatLoad(vc,MATSEQBAIJ,&C);CHKERRQ(ierr);
+  ierr = PetscViewerDestroy(vc);CHKERRQ(ierr);
+
+  ierr = MatGetSize(A,&m,&n);CHKERRQ(ierr);
+  ierr = MatGetSize(B,&m2,&n2);CHKERRQ(ierr);
+  if (m!=m2) SETERRQ(1,"Matrices are of different sixe. Cannot run this example");
+ 
+  /* Test MatEqual() */
+  ierr = MatEqual(B,C,&tflg);CHKERRQ(ierr);
+  if (!tflg) SETERRQ(1,"MatEqual() failed");
+
+  /* Test MatGetDiagonal() */
+   ierr = VecCreateSeq(PETSC_COMM_SELF,m,&x);CHKERRQ(ierr);
+   ierr = VecCreateSeq(PETSC_COMM_SELF,m,&y);CHKERRQ(ierr);
+
+  ierr = MatGetDiagonal(A,x);CHKERRQ(ierr);
+  ierr = MatGetDiagonal(B,y);CHKERRQ(ierr);
+  
+  ierr = VecEqual(x,y,&tflg);CHKERRQ(ierr);
+  if (!tflg)  SETERRQ(1,"MatGetDiagonal() failed");
+
+  /* Test MatDiagonalScale() */
+  
+  ierr = PetscRandomCreate(PETSC_COMM_SELF,RANDOM_DEFAULT,&r);CHKERRQ(ierr);
+  ierr = VecSetRandom(r,x);CHKERRQ(ierr);
+  ierr = VecSetRandom(r,y);CHKERRQ(ierr);
+
+  ierr = MatDiagonalScale(A,x,y);CHKERRQ(ierr);
+  ierr = MatDiagonalScale(B,x,y);CHKERRQ(ierr);
+  ierr = MatMult(A,x,y);CHKERRQ(ierr);
+  ierr = VecNorm(y,NORM_2,&norm1);CHKERRQ(ierr);
+  ierr = MatMult(B,x,y);CHKERRQ(ierr);
+  ierr = VecNorm(y,NORM_2,&norm2);CHKERRQ(ierr);
+  rnorm = ((norm1-norm2)*100)/norm1;
+  if (rnorm<-0.1 || rnorm>0.01) { 
+    ierr = PetscPrintf(PETSC_COMM_SELF,"Norm1=%e Norm2=%e\n",norm1,norm2);CHKERRQ(ierr);
+    SETERRQ(1,"MatDiagonalScale() failed");
+  }
+
+  /* Test MatGetRow()/ MatRestoreRow() */
+  for (ct=0; ct<100; ct++) {
+    ierr = PetscRandomGetValue(r,&rval);
+    row  = (int)(rval*m);
+    ierr = MatGetRow(A,row,&ncols1,&cols1,&vals1);CHKERRQ(ierr);
+    ierr = MatGetRow(B,row,&ncols2,&cols2,&vals2);CHKERRQ(ierr);
+    
+    for (i=0,j=0; i<ncols1 && j<ncols2; i++) {
+      while (cols2[j] != cols1[i]) j++;
+      if (vals1[i] != vals2[j]) SETERRQ(1,"MatGetRow() failed - vals incorrect.");
+    }
+    if (i<ncols1) SETERRQ(1,"MatGetRow() failed - cols incorrect");
+    
+    ierr = MatRestoreRow(A,row,&ncols1,&cols1,&vals1);CHKERRQ(ierr);
+    ierr = MatRestoreRow(B,row,&ncols2,&cols2,&vals2);CHKERRQ(ierr);
+  }
+    
+  MatDestroy(A);
+  MatDestroy(B);
+  MatDestroy(C);
+  VecDestroy(x);
+  VecDestroy(y);
+  PetscRandomDestroy(r);
+  ierr = PetscFinalize();CHKERRQ(ierr);
+#endif
+  return 0;
+}
+

@@ -1,0 +1,26 @@
+!
+!  $Id: petscmat.h90,v 1.4 2001/08/07 03:05:33 balay Exp $;
+!
+!  Additional Mat include file for use of PETSc with Fortran 90/HPF
+!
+
+      Interface 
+        Subroutine MatGetArrayF90(v,array,ierr)
+          PetscScalar, pointer :: array(:,:)
+          integer ierr
+          Mat     v
+        End Subroutine
+      End Interface
+
+
+      Interface 
+        Subroutine MatRestoreArrayF90(v,array,ierr)
+          PetscScalar, pointer :: array(:,:)
+          integer ierr
+          Mat     v
+        End Subroutine
+      End Interface
+
+!
+!     End of Mat Fortran 90 include file for the PETSc package
+!

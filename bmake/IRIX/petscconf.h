@@ -1,0 +1,59 @@
+#ifdef PETSC_RCS_HEADER
+"$Id: petscconf.h,v 1.26 2000/11/28 17:26:31 bsmith Exp $"
+"Defines the configuration for this machine"
+#endif
+
+#if !defined(INCLUDED_PETSCCONF_H)
+#define INCLUDED_PETSCCONF_H
+ 
+#define PARCH_IRIX
+#define PETSC_ARCH_NAME "IRIX"
+
+#define PETSC_HAVE_POPEN
+#define PETSC_HAVE_LIMITS_H
+#define PETSC_HAVE_PWD_H 
+#define PETSC_HAVE_STRING_H 
+#define PETSC_HAVE_STROPTS_H 
+#define PETSC_HAVE_MALLOC_H 
+#define PETSC_HAVE_DRAND48  
+#define PETSC_HAVE_GETDOMAINNAME
+#define PETSC_HAVE_UNAME 
+#define PETSC_HAVE_UNISTD_H 
+#define PETSC_HAVE_STDLIB_H
+#define PETSC_HAVE_SYS_TIME_H
+#define PETSC_HAVE_SYS_UTSNAME_H
+
+#define PETSC_HAVE_FORTRAN_UNDERSCORE 
+
+#define PETSC_HAVE_MEMMOVE
+#define PETSC_HAVE_DOUBLE_ALIGN
+#define PETSC_HAVE_DOUBLE_ALIGN_MALLOC
+
+#define PETSC_SIZEOF_VOIDP 4
+#define PETSC_SIZEOF_INT 4
+#define PETSC_SIZEOF_DOUBLE 8
+
+#define PETSC_HAVE_MEMALIGN
+
+#define PETSC_USE_DBX_DEBUGGER
+#define PETSC_HAVE_SYS_RESOURCE_H
+
+#define PETSC_WORDS_BIGENDIAN 1
+
+#define PETSC_USE_DYNAMIC_LIBRARIES 1
+#define PETSC_HAVE_RTLD_GLOBAL 1
+
+#define PETSC_HAVE_4ARG_SIGNAL_HANDLER
+#define PETSC_USE_KBYTES_FOR_SIZE
+
+#define PETSC_HAVE_F90_H "f90impl/f90_IRIX.h"
+#define PETSC_HAVE_F90_C "src/sys/src/f90/f90_IRIX.c"
+
+#define PETSC_USE_P_FOR_DEBUGGER
+
+#define PETSC_HAVE_IRIX_STYLE_FPTRAP
+
+#if defined(__cplusplus)
+#define PETSC_SIGNAL_CAST (void (*)(int))
+#endif
+#endif

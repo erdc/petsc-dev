@@ -1,0 +1,17 @@
+# $Id: makefile,v 1.4 2001/08/22 18:01:11 balay Exp $ 
+
+ALL: lib
+
+CFLAGS   =
+FFLAGS   =
+SOURCEC  = fdmatrix.c
+SOURCEF  =
+SOURCEH  = 
+OBJSC    = fdmatrix.o
+OBJSF    =
+LIBBASE  = libpetscmat
+MANSEC   = MatFD
+LOCDIR   = src/mat/matfd/
+
+include ${PETSC_DIR}/bmake/common/base
+include ${PETSC_DIR}/bmake/common/test

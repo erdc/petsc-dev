@@ -1,0 +1,22 @@
+!
+!  "$Id: fnorm.F,v 1.9 2001/08/07 03:05:24 balay Exp $";
+!
+!    Fortran kernel for the Norm() vector routine
+!
+#include "include/finclude/petscdef.h"
+!
+      subroutine FortranNormSqr(x,n,sum1)
+      implicit none
+      PetscScalar      x(*)
+      double precision sum1
+      integer n
+
+      integer i
+
+      do 10,i=1,n
+        sum1 = sum1 + PetscRealPart(x(i)*PetscConj(x(i)))
+ 10   continue
+
+      return 
+      end
+

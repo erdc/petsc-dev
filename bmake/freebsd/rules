@@ -1,0 +1,71 @@
+# $Id: rules,v 1.68 2001/08/22 17:57:34 balay Exp $ 
+
+libc: $(OBJSC)
+	${AR} ${AR_FLAGS} ${LIBNAME} ${OBJSC}
+libf: $(OBJSF)
+	${AR} ${AR_FLAGS} ${LIBNAME} ${OBJSF}
+
+#########
+#
+#  .F.f: target is nolonger required, but retained, as it is
+#  useful to check what the preprocessor output.
+#
+.F.f:
+	-${RM} __$*.f
+	-${CC} -E -traditional-cpp -x c ${FCPPFLAGS} $*.F  > __$*.f
+.F.o:
+	-${RM} __$*.f
+	-${CC} -E -traditional-cpp -x c ${FCPPFLAGS} $*.F  > __$*.f
+	-${FC} -c ${FOPTFLAGS} ${FFLAGS} __$*.f -o $*.o
+	-${RM} __$*.f
+
+.F.a:
+	-${RM} __$*.f
+	-${CC} -E -traditional-cpp -x c ${FCPPFLAGS} $*.F  > __$*.f
+	-${FC} -c ${FOPTFLAGS} ${FFLAGS} __$*.f -o $*.o
+	-${AR} cr ${LIBNAME} $*.o
+	-${RM} __$*.f $*.o
+
+shared: chkopts_basic
+	-@echo making shared libraries in ${INSTALL_LIB_DIR} ;\
+	cd ${INSTALL_LIB_DIR}; \
+	for LIBNAME in ${SHLIBS} ; \
+	do  \
+          if [ -f ${INSTALL_LIB_DIR}/$$LIBNAME.a ]; then \
+	    flag=""; \
+	    if [ -f ${INSTALL_LIB_DIR}/$$LIBNAME.${SLSUFFIX} ]; then \
+              flag=`find ${INSTALL_LIB_DIR} -type f -name $$LIBNAME.a -newer ${INSTALL_LIB_DIR}/$$LIBNAME.${SLSUFFIX} -print`; \
+	    else \
+	      flag="true"; \
+	    fi; \
+	    if [ "$$flag" != "" ]; then \
+	      echo "building $$LIBNAME.${SLSUFFIX}"; \
+	      ${LD} -Bshareable --whole-archive -o $$LIBNAME.${SLSUFFIX} $$LIBNAME.a ; \
+	    fi; \
+	  fi; \
+	done
+
+#
+#  Generates a shared library from any .a library; not just the PETSc ones
+#  This is to allow any user to generate his or her own shared library
+#
+oshared: 
+	-@echo "building ${LIBNAME}.${SLSUFFIX}"
+	-@${LD} -Bshareable --whole-archive -o ${LIBNAME}.${SLSUFFIX} ${LIBNAME}.a  > /dev/null 2>&1;
+
+#
+# Notes:
+#
+# With older version of ld can be replaced by '-Bforcearchive'
+#
+# We use the f77 f2c that comes with freebsd, the -Nn1000 is required for
+# large Fortran files, you can increase the 1000 if need be.
+#
+# Older versions of freebsd may require the use of gnumake
+# If you encounter problems with freebsd-make please send
+# the output of make to petsc-maint@mcs.anl.gov
+# 
+#OMAKE    = gmake  --no-print-directory
+
+
+

@@ -1,0 +1,17 @@
+!
+!  $Id: petscda.h90,v 1.3 1998/03/30 21:14:27 balay Exp $;
+!
+!  Additional DA include file for use of PETSc with Fortran 90/HPF
+!
+
+      Interface 
+        Subroutine DAGetGlobalIndicesF90(v,n,array,ierr)
+          integer, pointer :: array(:)
+          integer  ierr,n
+          DA       v
+        End Subroutine
+      End Interface
+
+!
+!     End of DA Fortran 90 include file for the PETSc package
+!

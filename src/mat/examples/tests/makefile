@@ -1,0 +1,822 @@
+# $Id: makefile,v 1.252 2001/09/07 20:10:28 bsmith Exp $ 
+
+CFLAGS		 = 
+FFLAGS		 = 
+CPPFLAGS         =
+FPPFLAGS         =
+LOCDIR		 = src/mat/examples/tests/
+EXAMPLESC	 = ex1.c ex2.c ex3.c ex4.c ex5.c ex6.c ex7.c ex8.c ex9.c\
+		   ex10.c ex11.c ex12.c ex13.c ex14.c ex15.c ex16.c ex17.c \
+		   ex19.c ex20.c ex21.c ex22.c ex24.c ex25.c \
+		   ex27.c ex28.c ex30.c ex31.c ex32.c ex33.c \
+		   ex34.c ex35.c ex37.c ex38.c ex40.c ex41.c ex42.c ex43.c\
+		   ex44.c ex45.c ex46.c ex47.c ex48.c ex49.c ex50.c ex51.c ex52.c \
+		   ex53.c ex54.c ex55.c ex56.c ex57.c ex58.c ex59.c ex60.c ex61.c \
+		   ex62.c ex64.c ex65.c ex66.c ex68.c ex70.c ex71.c ex72.c ex73.c ex74.c \
+                   ex75.c ex76.c ex80.c ex81.c ex77.c ex78.c
+EXAMPLESF	 = ex36.F ex16f90.F ex58f.F ex63.F ex67f.F ex79f.F ex85f.F
+
+include ${PETSC_DIR}/bmake/common/base
+
+ex1: ex1.o  chkopts
+	-${CLINKER}  -o ex1 ex1.o ${PETSC_MAT_LIB} 
+	${RM} ex1.o
+
+ex2: ex2.o chkopts
+	-${CLINKER} -o ex2 ex2.o ${PETSC_MAT_LIB}
+	${RM} ex2.o
+
+ex3: ex3.o chkopts
+	-${CLINKER} -o ex3 ex3.o ${PETSC_MAT_LIB}
+	${RM} ex3.o
+
+ex4: ex4.o chkopts
+	-${CLINKER} -o ex4 ex4.o ${PETSC_MAT_LIB}
+	${RM} ex4.o
+
+ex5: ex5.o chkopts
+	-${CLINKER}  -o ex5 ex5.o ${PETSC_MAT_LIB}
+	${RM} ex5.o
+
+ex6: ex6.o chkopts
+	-${CLINKER} -o ex6 ex6.o ${PETSC_MAT_LIB}
+	${RM} ex6.o
+
+ex7: ex7.o chkopts
+	-${CLINKER} -o ex7 ex7.o ${PETSC_MAT_LIB}
+	${RM} ex7.o
+
+ex8: ex8.o chkopts
+	-${CLINKER} -o ex8 ex8.o ${PETSC_MAT_LIB}
+	${RM} ex8.o
+
+ex9: ex9.o chkopts
+	-${CLINKER} -o ex9 ex9.o ${PETSC_MAT_LIB}
+	${RM} ex9.o
+
+ex10: ex10.o chkopts
+	-${CLINKER} -o ex10 ex10.o ${PETSC_MAT_LIB}
+	${RM} ex10.o
+
+ex11: ex11.o chkopts
+	-${CLINKER} -o ex11 ex11.o ${PETSC_MAT_LIB}
+	${RM} ex11.o
+
+ex12: ex12.o chkopts
+	-${CLINKER} -o ex12 ex12.o ${PETSC_MAT_LIB}
+	${RM} ex12.o
+
+ex13: ex13.o chkopts
+	-${CLINKER} -o ex13 ex13.o ${PETSC_MAT_LIB}
+	${RM} ex13.o
+
+ex14: ex14.o chkopts
+	-${CLINKER} -o ex14 ex14.o ${PETSC_MAT_LIB}
+	${RM} ex14.o
+
+ex15: ex15.o chkopts
+	-${CLINKER} -o ex15 ex15.o ${PETSC_MAT_LIB}
+	${RM} ex15.o
+
+ex16: ex16.o chkopts
+	-${CLINKER} -o ex16 ex16.o ${PETSC_MAT_LIB}
+	${RM} ex16.o
+
+ex16f90: ex16f90.o chkopts
+	-${FLINKER} -o ex16f90 ex16f90.o  ${PETSC_FORTRAN_LIB} ${PETSC_MAT_LIB}
+	${RM} ex16f90.o
+
+ex17: ex17.o chkopts
+	-${CLINKER} -o ex17 ex17.o ${PETSC_MAT_LIB}
+	${RM} ex17.o
+
+ex19: ex19.o chkopts
+	-${CLINKER} -o ex19 ex19.o ${PETSC_MAT_LIB}
+	${RM} ex19.o
+
+ex20: ex20.o chkopts
+	-${CLINKER} -o ex20 ex20.o ${PETSC_MAT_LIB}
+	${RM} ex20.o
+
+ex21: ex21.o chkopts
+	-${CLINKER} -o ex21 ex21.o ${PETSC_MAT_LIB}
+	${RM} ex21.o
+
+ex22: ex22.o chkopts
+	-${CLINKER} -o ex22 ex22.o ${PETSC_MAT_LIB}
+	${RM} ex22.o
+
+ex24: ex24.o chkopts
+	-${CLINKER} -o ex24 ex24.o ${PETSC_MAT_LIB}
+	${RM} ex24.o
+
+ex25: ex25.o chkopts
+	-${CLINKER} -o ex25 ex25.o ${PETSC_MAT_LIB}
+	${RM} ex25.o
+
+ex27: ex27.o chkopts
+	-${CLINKER} -o ex27 ex27.o ${PETSC_MAT_LIB}
+	${RM} ex27.o
+
+ex28: ex28.o chkopts
+	-${CLINKER} -o ex28 ex28.o ${PETSC_MAT_LIB}
+	${RM} ex28.o
+
+ex30: ex30.o chkopts
+	-${CLINKER} -o ex30 ex30.o ${PETSC_MAT_LIB}
+	${RM} ex30.o
+
+ex31: ex31.o chkopts
+	-${CLINKER} -o ex31 ex31.o ${PETSC_MAT_LIB}
+	${RM} ex31.o
+
+ex32: ex32.o chkopts
+	-${CLINKER} -o ex32 ex32.o ${PETSC_MAT_LIB}
+	${RM} ex32.o
+
+ex33: ex33.o chkopts
+	-${CLINKER} -o ex33 ex33.o ${PETSC_MAT_LIB}
+	${RM} ex33.o
+
+ex34: ex34.o chkopts
+	-${CLINKER} -o ex34 ex34.o ${PETSC_MAT_LIB}
+	${RM} ex34.o
+
+ex35: ex35.o chkopts
+	-${CLINKER} -o ex35 ex35.o ${PETSC_MAT_LIB}
+	${RM} ex35.o
+
+ex36: ex36.o chkopts
+	-${FLINKER} -o ex36 ex36.o ${PETSC_FORTRAN_LIB} ${PETSC_MAT_LIB}
+	${RM} ex36.o
+
+ex37: ex37.o chkopts
+	-${CLINKER} -o ex37 ex37.o ${PETSC_MAT_LIB}
+	${RM} ex37.o
+
+ex38: ex38.o chkopts
+	-${CLINKER} -o ex38 ex38.o ${PETSC_MAT_LIB}
+	${RM} ex38.o
+
+ex40: ex40.o chkopts
+	-${CLINKER} -o ex40 ex40.o ${PETSC_MAT_LIB}
+	${RM} ex40.o
+
+ex41: ex41.o chkopts
+	-${CLINKER} -o ex41 ex41.o ${PETSC_MAT_LIB}
+	${RM} ex41.o
+
+ex42: ex42.o chkopts
+	-${CLINKER} -o ex42 ex42.o ${PETSC_MAT_LIB}
+	${RM} ex42.o
+
+ex43: ex43.o chkopts
+	-${CLINKER} -o ex43 ex43.o ${PETSC_MAT_LIB}
+	${RM} ex43.o
+
+ex44: ex44.o chkopts
+	-${CLINKER} -o ex44 ex44.o ${PETSC_MAT_LIB}
+	${RM} ex44.o
+
+ex45: ex45.o chkopts
+	-${CLINKER} -o ex45 ex45.o ${PETSC_MAT_LIB}
+	${RM} ex45.o
+
+ex46: ex46.o chkopts
+	-${CLINKER} -o ex46 ex46.o ${PETSC_MAT_LIB}
+	${RM} ex46.o
+
+ex47: ex47.o chkopts
+	-${CLINKER} -o ex47 ex47.o ${PETSC_MAT_LIB}
+	${RM} ex47.o
+
+ex48: ex48.o chkopts
+	-${CLINKER} -o ex48 ex48.o ${PETSC_MAT_LIB}
+	${RM} ex48.o
+
+ex49: ex49.o chkopts
+	-${CLINKER} -o ex49 ex49.o ${PETSC_MAT_LIB}
+	${RM} ex49.o
+
+ex50: ex50.o chkopts
+	-${CLINKER} -o ex50 ex50.o ${PETSC_MAT_LIB}
+	${RM} ex50.o
+
+ex51: ex51.o chkopts
+	-${CLINKER} -o ex51 ex51.o ${PETSC_MAT_LIB}
+	${RM} ex51.o
+
+ex52: ex52.o chkopts
+	-${CLINKER} -o ex52 ex52.o ${PETSC_MAT_LIB}
+	${RM} ex52.o
+
+ex53: ex53.o chkopts
+	-${CLINKER} -o ex53 ex53.o ${PETSC_MAT_LIB}
+	${RM} ex53.o
+
+ex54: ex54.o chkopts
+	-${CLINKER} -o ex54 ex54.o ${PETSC_MAT_LIB}
+	${RM} ex54.o
+
+ex55: ex55.o chkopts
+	-${CLINKER} -o ex55 ex55.o ${PETSC_MAT_LIB}
+	${RM} ex55.o
+
+ex56: ex56.o chkopts
+	-${CLINKER} -o ex56 ex56.o ${PETSC_MAT_LIB}
+	${RM} ex56.o
+
+ex57: ex57.o chkopts
+	-${CLINKER} -o ex57 ex57.o ${PETSC_MAT_LIB}
+	${RM} ex57.o
+
+ex58: ex58.o chkopts
+	-${CLINKER} -o ex58 ex58.o ${PETSC_MAT_LIB}
+	${RM} ex58.o
+
+ex58f: ex58f.o chkopts
+	-${FLINKER} -o ex58f ex58f.o  ${PETSC_FORTRAN_LIB} ${PETSC_MAT_LIB}
+	${RM} ex58f.o
+
+ex59: ex59.o chkopts
+	-${CLINKER} -o ex59 ex59.o ${PETSC_MAT_LIB}
+	${RM} ex59.o
+
+ex60: ex60.o chkopts
+	-${CLINKER} -o ex60 ex60.o ${PETSC_MAT_LIB}
+	${RM} ex60.o
+
+ex61: ex61.o chkopts
+	-${CLINKER} -o ex61 ex61.o ${PETSC_MAT_LIB}
+	${RM} ex61.o
+
+ex62: ex62.o chkopts
+	-${CLINKER} -o ex62 ex62.o ${PETSC_MAT_LIB}
+	${RM} ex62.o
+
+ex63: ex63.o chkopts
+	-${FLINKER} -o ex63 ex63.o ${PETSC_FORTRAN_LIB} ${PETSC_MAT_LIB}
+	${RM} ex63.o
+
+ex64: ex64.o chkopts
+	-${CLINKER} -o ex64 ex64.o ${PETSC_MAT_LIB}
+	${RM} ex64.o
+
+ex65: ex65.o chkopts
+	-${CLINKER} -o ex65 ex65.o ${PETSC_MAT_LIB}
+	${RM} ex65.o
+
+ex66: ex66.o chkopts
+	-${CLINKER} -o ex66 ex66.o ${PETSC_MAT_LIB}
+	${RM} ex66.o
+
+ex67f: ex67f.o chkopts
+	-${FLINKER} -o ex67f ex67f.o  ${PETSC_FORTRAN_LIB} ${PETSC_MAT_LIB}
+	${RM} ex67f.o
+
+ex68: ex68.o chkopts
+	-${CLINKER} -o ex68 ex68.o ${PETSC_MAT_LIB}
+	${RM} ex68.o
+
+ex70: ex70.o chkopts
+	-${CLINKER} -o ex70 ex70.o ${PETSC_MAT_LIB}
+	${RM} ex70.o
+
+ex71: ex71.o chkopts
+	-${CLINKER} -o ex71 ex71.o ${PETSC_MAT_LIB}
+	${RM} ex71.o
+
+ex72: ex72.o chkopts
+	-${CLINKER} -o ex72 ex72.o ${PETSC_MAT_LIB}
+	${RM} ex72.o
+
+ex73: ex73.o chkopts
+	-${CLINKER} -o ex73 ex73.o ${PETSC_MAT_LIB}
+	${RM} ex73.o
+
+ex74: ex74.o chkopts
+	-${CLINKER} -o ex74 ex74.o ${PETSC_MAT_LIB}
+	${RM} ex74.o
+
+ex75: ex75.o chkopts
+	-${CLINKER} -o ex75 ex75.o ${PETSC_MAT_LIB}
+	${RM} ex75.o
+
+ex76: ex76.o chkopts
+	-${CLINKER} -o ex76 ex76.o ${PETSC_MAT_LIB}
+	${RM} ex76.o
+
+ex77: ex77.o chkopts
+	-${CLINKER} -o ex77 ex77.o ${PETSC_MAT_LIB}
+	${RM} ex77.o
+ex78: ex78.o chkopts
+	-${CLINKER} -o ex78 ex78.o ${PETSC_MAT_LIB}
+	${RM} ex78.o
+
+ex80: ex80.o chkopts
+	-${CLINKER} -o ex80 ex80.o ${PETSC_MAT_LIB}
+	${RM} ex80.o
+
+ex81: ex81.o chkopts
+	-${CLINKER} -o ex81 ex81.o ${PETSC_MAT_LIB}
+	${RM} ex81.o
+
+ex79f: ex79f.o chkopts
+	-${FLINKER} -o ex79f ex79f.o  ${PETSC_FORTRAN_LIB} ${PETSC_MAT_LIB}
+	${RM} ex79f.o
+ex85f: ex85f.o chkopts
+	-${FLINKER} -o ex85f ex85f.o  ${PETSC_FORTRAN_LIB} ${PETSC_MAT_LIB}
+	${RM} ex85f.o
+#-----------------------------------------------------------------------------
+NPROCS    = 1 3
+MATSHAPES = A B
+runex1:
+	-@${MPIRUN} -np 1  ex1 > ex1_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex1_1.out ex1_1.tmp) then true; \
+	   else echo "Possible problem with ex1_1, diffs above"; fi; \
+	   ${RM} -f ex1_1.tmp
+runex2:
+	-@for mattype in seqaij seqdense seqbdiag; do \
+	  for shape in ${MATSHAPES}; do \
+	    ${MPIRUN} -np 1 ex2 -mat_type $$mattype -rect$$shape > ex2_1.tmp 2>&1; \
+	      if (${DIFF} output/ex2_1_$$shape.out ex2_1.tmp) then true; \
+	      else echo "Possible problem with ex2_1_"$$shape" for" $$mattype", diffs above"; fi; \
+	      ${RM} -f ex2_1.tmp; \
+	  done; \
+	done;
+runex2_2:
+	@-for np in ${NPROCS}; do \
+	  for mattype in mpiaij mpidense mpibdiag; do \
+	    ${MPIRUN} -np $$np ex2 -mat_type $$mattype > ex2_2.tmp 2>&1; \
+	      if (${DIFF} output/ex2_2.out ex2_2.tmp) then true; \
+	      else echo "Possible problem with ex2_2 for" $$mattype", -np="$$np", diffs above"; fi; \
+	      ${RM} -f ex2_2.tmp; \
+	  done; \
+	done;
+runex3:
+	-@${MPIRUN} -np 1 ex3 > ex3_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex3_1.out ex3_1.tmp) then true; \
+	   else echo "Possible problem with ex3_1, diffs above"; fi; \
+	   ${RM} -f ex3_1.tmp
+runex4:
+	@-for mattype in seqaij seqdense seqbdiag; do \
+	  ${MPIRUN} -np 1 ex4 -mat_type $$mattype > ex4_1.tmp 2>&1; \
+	    if (${DIFF} output/ex4_1.out ex4_1.tmp) then true; \
+	    else echo "Possible problem with ex4_1 for" $$mattype", diffs above"; fi; \
+	    ${RM} -f ex4_1.tmp; \
+	done;
+runex4_2:
+	@-for mattype in mpiaij mpidense; do \
+	  ${MPIRUN} -np 3 ex4 -mat_type $$mattype > ex4_2.tmp 2>&1; \
+	    if (${DIFF} output/ex4_2.out ex4_2.tmp) then true; \
+	    else echo "Possible problem with ex4_2 for" $$mattype", diffs above"; fi; \
+	    ${RM} -f ex4_2.tmp; \
+	done;
+runex5:
+	-@for mattype in seqaij seqdense seqbdiag; do \
+	  for shape in ${MATSHAPES}; do \
+	    ${MPIRUN} -np 1 ex5 -mat_type $$mattype -rect$$shape > ex5_1.tmp 2>&1; \
+	      if (${DIFF} output/ex5_1_$$shape.out ex5_1.tmp) then true; \
+	      else echo "Possible problem with ex5_1_"$$shape" for" $$mattype", diffs above"; fi; \
+	      ${RM} -f ex5_1.tmp; \
+	  done; \
+	done;
+runex5_2:
+	@-for np in ${NPROCS}; do \
+	  for mattype in mpiaij mpidense mpibdiag; do \
+	    ${MPIRUN} -np $$np ex5 -mat_type $$mattype > ex5_2.tmp 2>&1; \
+	      if (${DIFF} output/ex5_2.out ex5_2.tmp) then true; \
+	      else echo "Possible problem with ex5_2 for" $$mattype", -np="$$np", diffs above"; fi; \
+	      ${RM} -f ex5_2.tmp; \
+	  done; \
+	done;
+runex5_3:	
+	@-for np in ${NPROCS}; do \
+	  for mattype in mpiaij mpibaij; do \
+	    ${MPIRUN} -np $$np ex5 -mat_type $$mattype -test_diagonalscale > ex5_3.tmp 2>&1; \
+	    if (${DIFF} output/ex5_3.out ex5_3.tmp) then true; \
+	    else echo "Possible problem with ex5_2 for" $$mattype", -np="$$np", diffs above"; fi; \
+	    ${RM} -f ex5_3.tmp; \
+	  done; \
+	done;
+runex5_4:
+
+runex6:
+	-@${MPIRUN} -np 1  ex6 > ex6_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex6_1.out ex6_1.tmp) then true; \
+	   else echo "Possible problem with ex6_1, diffs above"; fi; \
+	   ${RM} -f ex6_1.tmp
+runex7:
+	-@${MPIRUN} -np 1  ex7 > ex7_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex7_1.out ex7_1.tmp) then true; \
+	   else echo "Possible problem with ex7_1, diffs above"; fi; \
+	   ${RM} -f ex7_1.tmp
+runex8:
+	-@${MPIRUN} -np 1  ex8 > ex8_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex8_1.out ex8_1.tmp) then true; \
+	   else echo "Possible problem with ex8_1, diffs above"; fi; \
+	   ${RM} -f ex8_1.tmp
+runex9:
+	-@${MPIRUN}  -np 2 ex9 > ex9_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex9_1.out ex9_1.tmp) then true; \
+	   else echo "Possible problem with ex9_1, diffs above"; fi; \
+	   ${RM} -f ex9_1.tmp
+runex10:
+	-@${MPIRUN} -np 1  ex10 > ex10_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex10_1.out ex10_1.tmp) then true; \
+	   else echo "Possible problem with ex10_1, diffs above"; fi; \
+	   ${RM} -f ex10_1.tmp
+runex11:
+	-@${MPIRUN} -np 1  ex11 > ex11_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex11_1.out ex11_1.tmp) then true; \
+	   else echo "Possible problem with ex11_1, diffs above"; fi; \
+	   ${RM} -f ex11_1.tmp
+runex11_2:
+	-@${MPIRUN} -np 1  ex11 -mat_type seqbaij -mat_block_size 5 > ex11_2.tmp 2>&1;   \
+	   if (${DIFF} output/ex11_2.out ex11_2.tmp) then true; \
+	   else echo "Possible problem with ex11_2, diffs above"; fi; \
+	   ${RM} -f ex11_2.tmp
+runex11_3:
+	-@${MPIRUN} -np 1  ex11 -keep_zeroed_rows > ex11_3.tmp 2>&1;   \
+	   if (${DIFF} output/ex11_3.out ex11_3.tmp) then true; \
+	   else echo "Possible problem with ex11_3, diffs above"; fi; \
+	   ${RM} -f ex11_3.tmp
+runex11_4:
+	-@${MPIRUN} -np 1  ex11 -keep_zeroed_rows -mat_type seqbaij -mat_block_size 5 > ex11_4.tmp 2>&1; \
+	   if (${DIFF} output/ex11_4.out ex11_4.tmp) then true; \
+	   else echo "Possible problem with ex11_4, diffs above"; fi; \
+	   ${RM} -f ex11_4.tmp
+
+runex12:
+	-@${MPIRUN}  -np 2 ex12 > ex12_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex12_1.out ex12_1.tmp) then true; \
+	   else echo "Possible problem with ex12_1, diffs above"; fi; \
+	   ${RM} -f ex12_1.tmp
+runex12_2:
+	-@${MPIRUN}  -np 3 ex12 -mat_type mpibaij -mat_block_size 3 > ex12_2.tmp 2>&1;   \
+	   if (${DIFF} output/ex12_2.out ex12_2.tmp) then true; \
+	   else echo "Possible problem with ex12_2, diffs above"; fi; \
+	   ${RM} -f ex12_2.tmp
+runex12_3:
+	-@${MPIRUN}  -np 3 ex12 -mat_type mpiaij -keep_zeroed_rows > ex12_3.tmp 2>&1;   \
+	   if (${DIFF} output/ex12_3.out ex12_3.tmp) then true; \
+	   else echo "Possible problem with ex12_3, diffs above"; fi; \
+	   ${RM} -f ex12_3.tmp
+runex12_4:
+	-@${MPIRUN} -np 3 ex12 -keep_zeroed_rows -mat_type mpibaij -mat_block_size 3 > ex12_4.tmp 2>&1; \
+	   if (${DIFF} output/ex12_4.out ex12_4.tmp) then true; \
+	   else echo "Possible problem with ex12_4, diffs above"; fi; \
+	   ${RM} -f ex12_4.tmp
+runex13:
+	-@${MPIRUN} -np 1  ex13 > ex13_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex13_1.out ex13_1.tmp) then true; \
+	   else echo "Possible problem with ex13_1, diffs above"; fi; \
+	   ${RM} -f ex13_1.tmp
+runex14:
+	-@${MPIRUN} -np 1  ex14 > ex14_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex14_1.out ex14_1.tmp) then true; \
+	   else echo "Possible problem with ex14_1, diffs above"; fi; \
+	   ${RM} -f ex14_1.tmp
+runex15:
+	-@${MPIRUN} -np 1  ex15  > ex15_1.tmp 2>&1;	\
+	   if (${DIFF} output/ex15_1.out ex15_1.tmp) then true; \
+	   else echo "Possible problem with ex15_1, diffs above"; fi; \
+	   ${RM} -f ex15_1.tmp
+runex16:
+	-@${MPIRUN} -np 2 ex16  > ex16_1.tmp 2>&1;	\
+	   if (${DIFF} output/ex16_1.out ex16_1.tmp) then true; \
+	   else echo "Possible problem with ex16_1, diffs above"; fi; \
+	   ${RM} -f ex16_1.tmp
+runex16f90:
+	-@${MPIRUN} -np 2 ex16f90 | sort  > ex16f90_1.tmp 2>&1;	\
+	   if (${DIFF} output/ex16f90_1.out ex16f90_1.tmp) then true; \
+	   else echo "Possible problem with ex16f90_1, diffs above"; fi; \
+	   ${RM} -f ex16f90_1.tmp
+runex17:
+	-@${MPIRUN} -np 1  ex17 > ex17_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex17_1.out ex17_1.tmp) then true; \
+	   else echo "Possible problem with ex17_1, diffs above"; fi; \
+	   ${RM} -f ex17_1.tmp
+runex19:
+	-@${MPIRUN}  -np 4 ex19 > ex19_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex19_1.out ex19_1.tmp) then true; \
+	   else echo "Possible problem with ex19_1, diffs above"; fi; \
+	   ${RM} -f ex19_1.tmp
+runex20:
+	-@${MPIRUN} -np 1  ex20 -conv_mat_type seqbdiag > ex20_1.tmp 2>&1;	\
+	   if (${DIFF} output/ex20_1.out ex20_1.tmp) then true; \
+	   else echo "Possible problem with ex20_1, diffs above"; fi; \
+	   ${RM} -f ex20_1.tmp
+runex21:
+	-@${MPIRUN} -np 1  ex21 -mat_type seqaij > ex21_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex21_1.out ex21_1.tmp) then true; \
+	   else echo "Possible problem with ex21_1, diffs above"; fi; \
+	   ${RM} -f ex21_1.tmp
+runex22:
+	-@${MPIRUN} -np 1  ex22 > ex22_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex22_1.out ex22_1.tmp) then true; \
+	   else echo "Possible problem with ex22_1, diffs above"; fi; \
+	   ${RM} -f ex22_1.tmp
+runex30:
+	-@${MPIRUN} -np 1  ex30 -nox > ex30_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex30_1.out ex30_1.tmp) then true; \
+	   else echo "Possible problem with ex30_1, diffs above"; fi; \
+	   ${RM} -f ex30_1.tmp
+runex31:
+	-@${MPIRUN} -np 1  ex31 > ex31_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex31_1.out ex31_1.tmp) then true; \
+	   else echo "Possible problem with ex31_1, diffs above"; fi; \
+	   ${RM} -f ex31_1.tmp
+runex31_2:
+	-@${MPIRUN} -np 1  ex31 > ex31_2.tmp 2>&1;   \
+	   if (${DIFF} output/ex31_2.out ex31_2.tmp) then true; \
+	   else echo "Possible problem with ex31_2, diffs above"; fi; \
+	   ${RM} -f ex31_2.tmp
+runex35:
+	-@${MPIRUN} -np 1  ex35 > ex35_1.tmp	2>&1;	\
+	   if (${DIFF} output/ex35_1.out ex35_1.tmp) then true; \
+	   else echo "Possible problem with ex35_1, diffs above"; fi; \
+	   ${RM} -f ex35_1.tmp
+runex36:
+	-@${MPIRUN} -np 1  ex36 > ex36_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex36_1.out ex36_1.tmp) then true; \
+	   else echo "Possible problem with ex36_1, diffs above"; fi; \
+	   ${RM} -f ex36_1.tmp
+runex37:
+	-@${MPIRUN} -np 1  ex37 > ex37_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex37_1.out ex37_1.tmp) then true; \
+	   else echo "Possible problem with part I of ex37_1, diffs above"; fi; \
+	   ${RM} -f ex37_1.tmp
+	-@${MPIRUN} -np 3  ex37 > ex37_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex37_1.out ex37_1.tmp) then true; \
+	   else echo "Possible problem with part II of ex37_1, diffs above"; fi; \
+	   ${RM} -f ex37_1.tmp
+	-@${MPIRUN} -np 1  ex37 -mat_type seqbaij > ex37_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex37_1.out ex37_1.tmp) then true; \
+	   else echo "Possible problem with part III of ex37_1, diffs above"; fi; \
+	   ${RM} -f ex37_1.tmp
+	-@${MPIRUN} -np 3  ex37 -mat_type mpibaij > ex37_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex37_1.out ex37_1.tmp) then true; \
+	   else echo "Possible problem with part IV of ex37_1, diffs above"; fi; \
+	   ${RM} -f ex37_1.tmp
+runex40:
+	-@${MPIRUN} -np 3 ex40 -f ../matrices/arco1 -nd 7 -ov 2 -options_left no > ex40_1.tmp 2>&1; \
+	   grep -v "flg =1" ex40_1.tmp > ex40_12.tmp; \
+	   if (${DIFF} output/ex40_1.out ex40_12.tmp) then true; \
+	   else echo "Possible problem with ex40_1, diffs above"; fi; \
+	   ${RM} -f ex40_1.tmp ex40_12.tmp
+runex41:
+	-@${MPIRUN} -np 3 ex41 -f ../matrices/arco1 -nd 3 -ov 1 -options_left no > ex41_1.tmp 2>&1; \
+	   grep -v "flg =1" ex41_1.tmp > ex41_12.tmp; \
+	   if (${DIFF} output/ex41_1.out ex41_12.tmp) then true; \
+	   else echo "Possible problem with ex41_1, diffs above"; fi; \
+	   ${RM} -f ex41_1.tmp ex41_12.tmp
+runex42:
+	-@${MPIRUN} -np 3 ex42 -f ../matrices/arco1 -mat_aij_oneindex -options_left no \
+	   -nd 5 -ov 2  > ex42_1.tmp 2>&1; \
+	   grep -v "flg =1" ex42_1.tmp > ex42_12.tmp; \
+	   if (${DIFF} output/ex42_1.out ex42_12.tmp) then true; \
+	   else echo "Possible problem with ex42_1, diffs above"; fi; \
+	   ${RM} -f ex42_1.tmp ex42_12.tmp
+runex42_2:
+	-@${MPIRUN} -np 1  ex42 -f ../matrices/arco1 -mat_aij_oneindex  \
+	   -nd 5 -ov 2  -n > ex42_2.tmp 2>&1; \
+	   if (${DIFF} output/ex42_2.out ex42_2.tmp) then true; \
+	   else echo "Possible problem with ex42_2, diffs above"; fi; \
+	   ${RM} -f ex42_2.tmp
+runex46:
+	-@${MPIRUN} -np 2   ex46  -mat_view > ex46_1.tmp 2>&1; \
+	   if (${DIFF} output/ex46_1.out ex46_1.tmp) then true; \
+	   else echo "Possible problem with ex46_1, diffs above"; fi; \
+	   ${RM} -f ex46_1.tmp
+runex47:
+	-@${MPIRUN} -np 1  ex47 -f ../matrices/cfd.1.10 -mat_block_size 5 > ex47_1.tmp 2>&1; \
+	   if (${DIFF} output/ex47_1.out ex47_1.tmp) then true; \
+	   else echo "Possible problem with ex47_1, diffs above"; fi; \
+	   ${RM} -f ex47_1.tmp
+
+MATBLOCKSIZE   = 1 2 3 4 5 6 7 8
+runex48:
+	-@touch ex48_1.tmp;\
+	for bs in ${MATBLOCKSIZE}; do \
+	  ${MPIRUN} -np 1  ex48 -mat_block_size  $$bs >> ex48_1.tmp 2>&1; \
+	done; \
+	if (${DIFF} output/ex48_1.out ex48_1.tmp) then true; \
+	else echo "Possible problem with ex48_1, diffs above"; fi; \
+	${RM} -f ex48_1.tmp
+
+MATSIZE        = 11 13
+OVERLAP        = 1 3 
+NODOMAINS      = 7
+runex51:
+	-@touch ex51_1.tmp;\
+	for bs in ${MATBLOCKSIZE}; do \
+	    for matsize in ${MATSIZE}; do \
+	      for ov in ${OVERLAP}; do\
+	        for nd in ${NODOMAINS}; do \
+	          ${MPIRUN} -np 1  ex51 -mat_block_size $$bs -ov $$ov \
+                     -mat_size $$matsize -nd $$nd >> ex51_1.tmp 2>&1; \
+		done;\
+	      done;\
+	    done;\
+	done;\
+	  grep -v "flg =1" ex51_1.tmp > ex51_12.tmp; \
+	  if (${DIFF} output/ex51_1.out ex51_12.tmp) then true; \
+	  else echo "Possible problem with ex51_1, diffs above"; fi; \
+	  ${RM} -f ex51_1.tmp ex51_12.tmp
+
+runex53:
+	-@${MPIRUN} -np 3 ex53 -matload_block_size 1 -f ../matrices/small > ex53_1.tmp 2>&1;\
+	${MPIRUN} -np 3 ex53 -matload_block_size 2 -f ../matrices/small >> ex53_1.tmp 2>&1;\
+	${MPIRUN} -np 4 ex53 -matload_block_size 3 -f ../matrices/small >> ex53_1.tmp 2>&1;\
+	${MPIRUN} -np 3 ex53 -matload_block_size 4 -f ../matrices/small >> ex53_1.tmp 2>&1;\
+	${MPIRUN} -np 3 ex53 -matload_block_size 5 -f ../matrices/small >> ex53_1.tmp 2>&1;\
+	${MPIRUN} -np 3 ex53 -matload_block_size 6 -f ../matrices/small >> ex53_1.tmp 2>&1;\
+	${MPIRUN} -np 3 ex53 -matload_block_size 7 -f ../matrices/small >> ex53_1.tmp 2>&1;\
+	${MPIRUN} -np 3 ex53 -matload_block_size 8 -f ../matrices/small >> ex53_1.tmp 2>&1;\
+	if (${DIFF} output/ex53_1.out ex53_1.tmp) then true; \
+	else echo "Possible problem with ex53_1, diffs above"; fi; \
+	${RM} -f ex53_1.tmp
+
+runex54:
+	-@for bs in ${MATBLOCKSIZE}; do \
+	    for matsize in ${MATSIZE}; do \
+	      for ov in ${OVERLAP}; do\
+	        for nd in ${NODOMAINS}; do \
+		  for np in ${NPROCS}; do \
+                    ${MPIRUN} -np $$np ex54 -mat_block_size $$bs -ov $$ov \
+                       -mat_size $$matsize -nd $$nd ;\
+		  done; \
+		done;\
+	      done;\
+	    done;\
+	done;
+
+runex56:
+	-@${MPIRUN} -np 1  ex56  > ex56_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex56_1.out ex56_1.tmp) then true; \
+	   else echo "Possible problem with ex56_1, diffs above"; fi; \
+	   ${RM} -f ex56_1.tmp
+
+runex56_2:
+	-@${MPIRUN} -np 1  ex56  -column_oriented > ex56_2.tmp 2>&1;   \
+	   if (${DIFF} output/ex56_2.out ex56_2.tmp) then true; \
+	   else echo "Possible problem with ex56_2, diffs above"; fi; \
+	   ${RM} -f ex56_2.tmp
+
+runex56_3:
+	-@${MPIRUN} -np 3  ex56 -column_oriented > ex56_3.tmp 2>&1;   \
+	   if (${DIFF} output/ex56_3.out ex56_3.tmp) then true; \
+	   else echo "Possible problem with ex56_3, diffs above"; fi; \
+	   ${RM} -f ex56_3.tmp
+
+runex56_4:
+	-@${MPIRUN} -np 3  ex56 -ass_extern > ex56_4.tmp 2>&1;   \
+	   if (${DIFF} output/ex56_4.out ex56_4.tmp) then true; \
+	   else echo "Possible problem with ex56_4, diffs above"; fi; \
+	   ${RM} -f ex56_4.tmp
+
+runex56_5:
+	-@${MPIRUN} -np 3  ex56 -ass_extern -zero_rows > ex56_5.tmp 2>&1;   \
+	   if (${DIFF} output/ex56_5.out ex56_5.tmp) then true; \
+	   else echo "Possible problem with ex56_5, diffs above"; fi; \
+	   ${RM} -f ex56_5.tmp
+
+runex59:
+	-@${MPIRUN} -np 1  ex59  > ex59_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex59_1.out ex59_1.tmp) then true; \
+	   else echo "Possible problem with ex59_1, diffs above"; fi; \
+	   ${RM} -f ex59_1.tmp
+
+runex59_2:
+	-@${MPIRUN} -np 2  ex59  > ex59_2.tmp 2>&1;   \
+	   if (${DIFF} output/ex59_2.out ex59_2.tmp) then true; \
+	   else echo "Possible problem with ex59_2, diffs above"; fi; \
+	   ${RM} -f ex59_2.tmp
+
+runex59_3:
+	-@${MPIRUN} -np 3  ex59  > ex59_3.tmp 2>&1;   \
+	   if (${DIFF} output/ex59_3.out ex59_3.tmp) then true; \
+	   else echo "Possible problem with ex59_3, diffs above"; fi; \
+	   ${RM} -f ex59_3.tmp
+
+runex60:
+	-@${MPIRUN} -np 3  ex60  -col 7 > ex60_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex60_1.out ex60_1.tmp) then true; \
+	   else echo "Possible problem with ex60_1, diffs above"; fi; \
+	   ${RM} -f ex60_1.tmp
+
+runex61:
+	-@${MPIRUN} -np 1 ex61  > ex61_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex61_1.out ex61_1.tmp) then true; \
+	   else echo "Possible problem with ex61_1, diffs above"; fi; \
+	   ${RM} -f ex61_1.tmp
+
+runex61_2:
+	-@${MPIRUN} -np 1  ex61 -baij  > ex61_2.tmp 2>&1;   \
+	   if (${DIFF} output/ex61_1.out ex61_2.tmp) then true; \
+	   else echo "Possible problem with ex61_2, diffs above"; fi; \
+	   ${RM} -f ex61_2.tmp
+runex63:
+	-@${MPIRUN} -np 2  ex63  > ex63_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex63_1.out ex63_1.tmp) then true; \
+	   else echo "Possible problem with ex63_1, diffs above"; fi; \
+	   ${RM} -f ex63_1.tmp dense.mat
+runex67f:
+	-@${MPIRUN} -np 1  ex67f -options_left no  > ex67f_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex67f_1.out ex67f_1.tmp) then true; \
+	   else echo "Possible problem with ex67f_1, diffs above"; fi; \
+	   ${RM} -f ex67f_1.tmp
+runex73:
+	-@${MPIRUN} -np 3  ex73  -nox -f /home/petsc/matrices/arco1 -mat_partitioning_type parmetis -load_ignore_info
+
+MATBLOCKSIZE   = 1 2 3 4 5 6 7 8
+runex74:
+	-@touch ex74_1.tmp;\
+	for bs in ${MATBLOCKSIZE}; do \
+	  ${MPIRUN} -np 1  ex74 -bs  $$bs >> ex74_1.tmp 2>&1; \
+	done; \
+	if (${DIFF} output/ex74_1.out ex74_1.tmp) then true; \
+	else echo "Possible problem with ex74_1, diffs above"; fi; \
+	${RM} -f ex74_1.tmp
+
+NPROCS    = 1 2 3
+runex75:
+	-@touch ex75_1.tmp;\
+	for np in ${NPROCS}; do \
+	  for bs in ${MATBLOCKSIZE}; do \
+	   ${MPIRUN} -np $$np  ex75 -bs  $$bs >> ex75_1.tmp 2>&1; \
+	  done; \
+	done; \
+	if (${DIFF} output/ex75_1.out ex75_1.tmp) then true; \
+	else echo "Possible problem with ex75_1, diffs above"; fi; \
+	${RM} -f ex75_1.tmp
+
+runex76:
+	-@touch ex76_1.tmp;\
+	for bs in ${MATBLOCKSIZE}; do \
+	  ${MPIRUN} -np 1  ex76 -bs  $$bs >> ex76_1.tmp 2>&1; \
+	done; \
+	if (${DIFF} output/ex76_1.out ex76_1.tmp) then true; \
+	else echo "Possible problem with ex76_1, diffs above"; fi; \
+	${RM} -f ex76_1.tmp
+runex77:
+	-@touch ex77_1.tmp;\
+	for bs in ${MATBLOCKSIZE}; do \
+	  ${MPIRUN} -np 1  ex77 -bs  $$bs >> ex77_1.tmp 2>&1; \
+	done; \
+	if (${DIFF} output/ex77_1.out ex77_1.tmp) then true; \
+	else echo "Possible problem with ex77_1, diffs above"; fi; \
+	${RM} -f ex77_1.tmp
+
+runex78:
+	-@${MPIRUN} -np 1  ex78 -Ain ~/matrices/indefinite/afiro_A.dat -bin \
+	   ~/matrices/indefinite/afiro_b.dat -uin ~/matrices/indefinite/afiro_u.dat > ex78_1.tmp 2>&1;   \
+	   if (${DIFF} output/ex78_1.out ex78_1.tmp) then true; \
+	   else echo "Possible problem with ex78_1, diffs above"; fi; \
+	   ${RM} -f ex78_1.tmp
+
+TESTEXAMPLES_1	 = ex1.PETSc runex1 ex1.rm ex3.PETSc runex3 ex3.rm ex5.PETSc \
+		   runex5 runex5_2 ex5.rm ex6.PETSc runex6 ex6.rm ex8.PETSc \
+		   runex8 ex8.rm ex9.PETSc runex9 ex9.rm ex10.PETSc runex10 ex10.rm \
+		   ex11.PETSc runex11 runex11_2 runex11_3 runex11_4 ex11.rm ex14.PETSc \
+		   runex14 ex14.rm \
+		   ex15.PETSc runex15 ex15.rm ex19.PETSc ex19.rm ex20.PETSc runex20 \
+		   ex20.rm ex21.PETSc runex21 ex21.rm ex22.PETSc runex22 ex22.rm \
+                   ex16.PETSc runex16 ex16.rm ex59.PETSc runex59 runex59_2 runex59_3 \
+                   ex59.rm ex60.PETSc runex60 ex60.rm ex61.PETSc runex61 runex61_2 ex61.rm \
+                   ex65.PETSc ex65.rm ex66.PETSc ex66.rm
+TESTEXAMPLES_2	 = ex2.PETSc runex2 ex2.rm ex4.PETSc runex4 runex4_2 ex4.rm ex7.PETSc \
+		   runex7 ex7.rm ex12.PETSc runex12 runex12_2 runex12_3 runex12_4 ex12.rm \
+		   ex13.PETSc runex13 \
+		   ex13.rm ex17.PETSc ex17.rm ex19.PETSc runex19 ex19.rm ex24.PETSc \
+		   ex24.rm ex25.PETSc ex25.rm ex27.PETSc ex27.rm ex28.PETSc ex28.rm \
+		   ex30.PETSc runex30 ex30.rm ex31.PETSc runex31 runex31_2 ex31.rm \
+                   ex33.PETSc ex33.rm ex34.PETSc ex34.rm ex35.PETSc runex35 \
+		   ex35.rm ex37.PETSc runex37 ex37.rm ex38.PETSc ex38.rm \
+		   ex43.PETSc ex43.rm ex48.PETSc runex48 ex48.rm ex49.PETSc ex49.rm \
+		   ex51.PETSc runex51 ex51.rm \
+		   ex52.PETSc ex52.rm ex54.PETSc runex54 ex54.rm ex56.PETSc runex56 \
+		   runex56_2  runex56_3  runex56_4 runex56_5 ex56.rm \
+		   ex74.PETSc runex74 ex74.rm ex75.PETSc runex75 ex75.rm \
+		   ex76.PETSc runex76 ex76.rm ex77.PETSc runex77 ex77.rm \
+		  ex78.PETSc ex78.rm
+TESTEXAMPLES_3	 = ex36.PETSc runex36 ex36.rm ex63.PETSc runex63 ex63.rm \
+                   ex67f.PETSc ex67f.rm ex79f.PETSc ex79f.rm
+TESTEXAMPLES_9	 = ex36.PETSc runex36 ex36.rm
+TESTEXAMPLES_4	 = ex1.PETSc runex1 ex1.rm ex2.PETSc runex2 ex2.rm ex4.PETSc\
+		   runex4 ex4.rm ex5.PETSc runex5 ex5.rm ex6.PETSc runex6 ex6.rm\
+		   ex10.PETSc runex10 ex10.rm ex14.PETSc runex14 ex14.rm ex15.PETSc\
+		   runex15 ex15.rm ex20.PETSc runex20 ex20.rm ex21.PETSc runex21 \
+		   ex21.rm ex35.PETSc runex35 ex35.rm  ex48.PETSc runex48 ex48.rm \
+                   ex71.PETSc ex71.rm
+TESTEXAMPLES_6	 = ex32.PETSc ex32.rm ex40.PETSc runex40 ex40.rm ex41.PETSc runex41 ex41.rm \
+	           ex42.PETSc runex42 ex42.rm  ex41.PETSc ex41.rm ex47.PETSc ex47.rm  \
+	           ex50.PETSc ex50.rm ex53.PETSc runex53 ex53.rm
+TESTEXAMPLES_BLOCKSOLVE	 = ex5.PETSc runex5_3 ex5.rm ex46.PETSc runex46 ex46.rm
+TESTEXAMPLES_8	 = ex67f.PETSc runex67f ex67f.rm
+TESTEXAMPLES_12	 = ex16f90.PETSc runex16f90 ex16f90.rm 
+TESTEXAMPLES_13  = ex58f.PETSc ex58f.rm ex70.PETSc ex70.rm ex72.PETSc ex72.rm
+TESTEXAMPLES_PARMETIS  = ex73.PETSc ex73.rm
+
+include ${PETSC_DIR}/bmake/common/test

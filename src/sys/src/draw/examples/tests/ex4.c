@@ -1,0 +1,37 @@
+/*$Id: ex4.c,v 1.12 2001/08/07 21:28:44 bsmith Exp $*/
+
+static char help[] = "Demonstrates use of PetscDrawZoom()\n";
+
+#include "petsc.h"
+
+#undef __FUNCT__
+#define __FUNCT__ "zoomfunction"
+int zoomfunction(PetscDraw draw,void *dummy)
+{
+  int  ierr,i; 
+
+  for (i=0; i<256; i++) {
+    ierr = PetscDrawLine(draw,0.0,((PetscReal)i)/256.,1.0,((PetscReal)i)/256.,i);CHKERRQ(ierr);
+  }
+  return 0;
+}
+
+#undef __FUNCT__
+#define __FUNCT__ "main"
+int main(int argc,char **argv)
+{
+  PetscDraw draw;
+  int  ierr,x = 0,y = 0,width = 256,height = 256; 
+
+  ierr = PetscInitialize(&argc,&argv,(char*)0,help);CHKERRQ(ierr); 
+
+  /* ierr = PetscDrawOpenX(PETSC_COMM_SELF,0,"Title",x,y,width,height,&draw);CHKERRQ(ierr);*/
+  ierr = PetscDrawCreate(PETSC_COMM_SELF,0,"Title",x,y,width,height,&draw);CHKERRQ(ierr);
+  ierr = PetscDrawSetFromOptions(draw);CHKERRQ(ierr);
+  ierr = PetscDrawZoom(draw,zoomfunction,PETSC_NULL);CHKERRQ(ierr);
+  ierr = PetscDrawDestroy(draw);CHKERRQ(ierr);
+  ierr = PetscFinalize();CHKERRQ(ierr);
+  return 0;
+}
+
+ 

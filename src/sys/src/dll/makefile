@@ -1,0 +1,21 @@
+# $Id: makefile,v 1.11 2001/08/22 17:59:22 balay Exp $ 
+
+ALL: lib 
+CFLAGS    = -DPETSC_BOPT='"${BOPT}"' -DPETSC_LIB_DIR='"${PETSC_LIB_DIR}"' \
+            -DPETSC_DIR='"${PETSC_DIR}"' -DPETSC_SLSUFFIX='"${SLSUFFIX}"'
+FFLAGS    =
+CPPFLAGS  = 
+SOURCEC	  =  dl.c   reg.c
+SOURCEF	  =
+SOURCEH	  = 
+OBJSC	  = dl.o   reg.o
+OBJSF	  =
+MANSEC	  = Sys
+LIBBASE	  = libpetsc
+DIRS	  = 
+LOCDIR	  = src/sys/src/dll/
+
+include ${PETSC_DIR}/bmake/common/base
+include ${PETSC_DIR}/bmake/common/test
+
+

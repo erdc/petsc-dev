@@ -1,0 +1,61 @@
+!
+!  $Id: petscis.h90,v 1.4 2000/05/24 22:17:42 balay Exp $;
+!
+!  Additional IS include file for use of PETSc with Fortran 90/HPF
+!
+      Interface 
+        Subroutine ISGetIndicesF90(i,array,ierr)
+          integer, pointer :: array(:)
+          integer  ierr
+          IS       i
+        End Subroutine
+      End Interface
+
+
+      Interface 
+        Subroutine ISRestoreIndicesF90(i,array,ierr)
+          integer, pointer :: array(:)
+          integer ierr
+          IS      i
+        End Subroutine
+      End Interface
+
+! ------------------------------------------------------
+
+      Interface 
+        Subroutine ISBlockGetIndicesF90(i,array,ierr)
+          integer, pointer :: array(:)
+          integer  ierr
+          IS       i
+        End Subroutine
+      End Interface
+
+
+      Interface 
+        Subroutine ISBlockRestoreIndicesF90(i,array,ierr)
+          integer, pointer :: array(:)
+          integer ierr
+          IS      i
+        End Subroutine
+      End Interface
+
+! ------------------------------------------------------
+      Interface 
+        Subroutine ISColoringGetISF90(ic,n,isa,ierr)
+          IS, pointer :: isa(:)
+          integer     n,ierr
+          ISColoring  ic
+        End Subroutine
+      End Interface
+
+      Interface 
+        Subroutine ISColoringRestoreISF90(ic,isa,ierr)
+          IS, pointer :: isa(:)
+          integer     ierr
+          ISColoring  ic
+        End Subroutine
+      End Interface
+
+!
+!     End of IS Fortran 90 include file for the PETSc package
+!

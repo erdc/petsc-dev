@@ -1,0 +1,131 @@
+% $Id: manual.tex,v 1.143 2001/06/21 21:20:15 bsmith Exp $ 
+%
+%
+\documentclass[twoside,11pt]{../sty/report_petsc}
+
+\usepackage{makeidx,xspace}
+\usepackage[bookmarksopen,colorlinks]{hyperref}
+\usepackage{color}
+\input pdfcolor.tex     
+
+\usepackage{times}
+\usepackage{psfig}
+\usepackage{../sty/verbatim}
+\usepackage{../sty/tpage}
+\usepackage{../sty/here}
+\usepackage{../sty/anlhelper}
+\usepackage{../sty/trl}
+ 
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textheight}{9.2in}
+\setlength{\topmargin}{-.8in}
+
+\newcommand{\findex}[1]{\index{#1}}
+\newcommand{\sindex}[1]{\index{#1}}
+\newcommand{\F}{\mbox{\boldmath \(F\)}}
+\newcommand{\x}{\mbox{\boldmath \(x\)}}
+\newcommand{\rr}{\mbox{\boldmath \(r\)}}
+\newcommand{\trllink}[2]{{%
+    \pdfstartlink user{%
+        /Subtype /Link
+        /A << 
+            /Type /Action 
+            /S /URI 
+            /URI (#1) 
+        >>}%
+    \Red  \trl{#2} \Black
+    \pdfendlink}}
+
+\makeindex
+ 
+% Defines the environment where design issues are discussed. In the manual
+% version of this report, these regions are ignored.
+\def\design{\medskip \noindent Design Issue:\begin{em}}
+\def\enddesign{\end{em} \medskip}
+% Manual version:
+% \def\design{\comment}
+% \def\enddesign{\endcomment}
+
+% Print DRAFT in large letters across every page
+%\special{!userdict begin /bop-hook{gsave 200 70 translate
+%65 rotate /Times-Roman findfont 216 scalefont setfont
+%0 0 moveto 0.95 setgray (DRAFT) show grestore}def end}
+
+% Defines that we're doing the whole manual, not the short intro part,
+% used in part1.tex.
+\def\shortintro{false}
+
+\begin{document}
+
+\ANLTitle{PETSc Users Manual}{\em Satish Balay\\
+William Gropp\\ Lois Curfman McInnes\\ Barry Smith\\
+\hspace{0.3in}\\
+Mathematics and Computer Science Division \\
+http://www.mcs.anl.gov/petsc
+\vspace{0.5in} \\
+{\rm This manual is intended for use with PETSc 2.1.0}}
+{95/11 - Revision 2.1.0}{April 11, 2001}
+
+\newpage
+
+\hbox{ }
+
+\vspace{1in}
+\date{\today}
+
+% Abstract for users manual
+\addcontentsline{toc}{chapter}{Abstract}
+\input{abstract.tex}
+
+\input{gettinginfo.tex}
+
+\medskip \medskip
+
+%
+% Acknowledgements for users manual
+\newpage \hbox{ } \newpage
+\input{acknowl.tex}
+
+% Blank page makes double sided printout look bettter.
+%\newpage \hbox{ } \newpage
+
+\pagenumbering{roman}
+\setcounter{page}{3}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+
+% --------------------------------------------------------------------
+%                            PART 1
+% --------------------------------------------------------------------
+\part{Introduction to PETSc}
+\label{part:intro}
+\chapter{Getting Started}
+\input{part1.tex}
+
+% --------------------------------------------------------------------
+%                            PART 2
+% --------------------------------------------------------------------
+\part{Programming with PETSc}
+\label{part:usage}
+\input{part2.tex}
+
+
+%------------------------------------------------------------------
+
+
+\newpage
+
+\include{index}
+
+\bibliographystyle{plain}
+\addcontentsline{toc}{chapter}{Bibliography}
+\label{sec:bib}
+\bibliography{../petsc}
+
+\end{document}
+
+

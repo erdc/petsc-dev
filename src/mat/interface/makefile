@@ -1,0 +1,17 @@
+# $Id: makefile,v 1.41 2001/08/22 18:00:20 balay Exp $ 
+
+ALL: lib
+
+CFLAGS   =
+FFLAGS   =
+SOURCEC  = matrix.c mhas.c matreg.c matregis.c matnull.c
+SOURCEF  =
+SOURCEH  = 
+OBJSC    = matrix.o mhas.o matreg.o matregis.o matnull.o
+OBJSF    =
+LIBBASE  = libpetscmat
+MANSEC   = Mat
+LOCDIR   = src/mat/interface/
+
+include ${PETSC_DIR}/bmake/common/base
+include ${PETSC_DIR}/bmake/common/test

@@ -1,0 +1,18 @@
+# $Id: makefile,v 1.30 2001/08/22 18:02:00 balay Exp $ 
+
+ALL: lib
+
+CFLAGS   =
+FFLAGS   =
+SOURCEC  = ls.c lsparams.c
+SOURCEF  =
+SOURCEH  = ls.h
+OBJSC    = ls.o lsparams.o
+OBJSF    =
+LIBBASE  = libpetscsnes
+MANSEC   = SNES
+LOCDIR   = src/snes/impls/ls/
+
+include ${PETSC_DIR}/bmake/common/base
+include ${PETSC_DIR}/bmake/common/test
+

@@ -1,0 +1,30 @@
+# $Id: makefile,v 1.5 2001/08/22 18:02:55 balay Exp $ 
+
+ALL: lib
+
+CFLAGS   = 
+FFLAGS   =
+SOURCEC  = cstring.c
+SOURCEF  =
+SOURCEH  = 
+OBJSC    = cstring.o
+OBJSF    =
+LIBBASE  = libpetscvec
+MANSEC   = Vec
+LOCDIR   = src/pf/impls/string/
+
+include ${PETSC_DIR}/bmake/common/base
+include ${PETSC_DIR}/bmake/common/test
+
+#
+#  This rule is called by the function PFStringCreateFunction() and creates a dynamic
+# library with a function in it named FNAME
+petscdlib.c:
+	sed -e "s/FUNCTION/${STRINGFUNCTION}/g" -e "s/_MIN_/${MIN}/g" -e "s/_NOUT_/${NOUT}/g" ${PETSC_DIR}/src/pf/impls/string/cstringbase.c > petscdlib.c
+
+petscdlib:  petscdlib.c
+	-@${RM} libpetscdlib.a libpetscdlib.${SLSUFFIX}
+	-@${OMAKE} PETSC_ARCH=${PETSC_ARCH} BOPT=${BOPT} LIBNAME=libpetscdlib.a OBJSC=petscdlib.o libc
+	-@${OMAKE} PETSC_ARCH=${PETSC_ARCH} BOPT=${BOPT} LIBNAME=libpetscdlib oshared
+#	-@${RM} petscdlib.c
+

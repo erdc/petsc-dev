@@ -1,0 +1,59 @@
+#ifdef PETSC_RCS_HEADER
+"$Id: petscconf.h,v 1.4 2000/09/27 19:08:40 balay Exp $"
+"Defines the configuration for this machine"
+#endif
+
+#if !defined(INCLUDED_PETSCCONF_H)
+#define INCLUDED_PETSCCONF_H
+
+#define PARCH_hpux 
+#define PETSC_ARCH_NAME "hpux"
+
+#define PETSC_HAVE_LIMITS_H
+#define PETSC_HAVE_STDLIB_H 
+#define PETSC_HAVE_PWD_H 
+#define PETSC_HAVE_MALLOC_H 
+#define PETSC_HAVE_STRING_H 
+#define _POSIX_SOURCE 
+#define _INCLUDE_POSIX_SOURCE
+#define PETSC_HAVE_DRAND48 
+#define _INCLUDE_XOPEN_SOURCE 
+#define _INCLUDE_XOPEN_SOURCE_EXTENDED 
+#define _INCLUDE_HPUX_SOURCE 
+#define PETSC_HAVE_GETDOMAINNAME 
+#define PETSC_HAVE_SYS_TIME_H
+#define PETSC_HAVE_UNISTD_H 
+#define PETSC_HAVE_UNAME
+
+#if defined(USING_ACC_FOR_CXX)
+#define PETSC_HAVE_NONSTANDARD_COMPLEX_H "complex"
+#else
+#define PETSC_HAVE_TEMPLATED_COMPLEX
+#endif
+
+#define PETSC_HAVE_READLINK
+#define PETSC_HAVE_MEMMOVE
+
+#define PETSC_USE_XDB_DEBUGGER
+
+#define PETSC_HAVE_SYS_RESOURCE_H
+
+#define PETSC_HAVE_CLOCK
+#define PETSC_SIZEOF_VOIDP 8
+#define PETSC_SIZEOF_INT 4
+#define PETSC_SIZEOF_DOUBLE 8
+
+#define PETSC_WORDS_BIGENDIAN 1
+#define PETSC_NEED_SOCKET_PROTO
+
+#define PETSC_HAVE_FORTRAN_UNDERSCORE
+
+#define PETSC_NEED_DEBUGGER_NO_SLEEP
+#define PETSC_HAVE_NO_GETRUSAGE
+#define PETSC_USE_LARGEP_FOR_DEBUGGER
+
+#define PETSC_HAVE_F90_H "f90impl/f90_hpux.h"
+#define PETSC_HAVE_F90_C "src/sys/src/f90/f90_hpux.c"
+
+#endif
+

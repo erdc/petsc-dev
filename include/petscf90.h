@@ -1,0 +1,47 @@
+/* $Id: petscf90.h,v 1.3 2000/09/22 18:54:06 balay Exp $ */
+
+#if !defined(__PETSCF90_H)
+#define __PETSCF90_H
+
+#include "petsc.h"
+#if defined PETSC_HAVE_F90_H
+#include PETSC_HAVE_F90_H
+
+/* Check if PETSC_HAVE_F90_C is also specified */
+#if !defined(PETSC_HAVE_F90_C)
+#error "Both PETSC_HAVE_F90_H and PETSC_HAVE_F90_C flags have to be speficied"
+#endif
+
+EXTERN int F90Array1dCreate(void*,PetscDataType,int,int,F90Array1d*);
+EXTERN int F90Array1dAccess(F90Array1d*,void**);
+EXTERN int F90Array1dDestroy(F90Array1d*);
+EXTERN int F90Array1dGetNextRecord(F90Array1d*,void**);
+
+EXTERN int F90Array2dCreate(void*,PetscDataType,int,int,int,int,F90Array2d*);
+EXTERN int F90Array2dAccess(F90Array2d*,void**);
+EXTERN int F90Array2dDestroy(F90Array2d*);
+EXTERN int F90Array2dGetNextRecord(F90Array2d*,void**);
+
+/* 
+EXTERN int F90Array1dGetInfo(F90Array1d*,PetscDataType*,int*,int*);
+EXTERN int F90Array2dGetInfo(F90Array2d*,PetscDataType*,int*,int*,int*,int*);
+*/
+#endif
+#endif
+
+
+/*
+  F90Array1dCreate - Given a C pointer to a one dimensional
+  array and its length; this fills in the appropriate Fortran 90
+  pointer data structure.
+
+  Input Parameters:
++   array - regular C pointer (address)
+.   type  - DataType of the array
+.   start - starting index of the array
+-   len   - length of array (in items)
+
+  Output Parameters:
+.   ptr - Fortran 90 pointer
+*/ 
+
