@@ -2090,9 +2090,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Users/barrysmith/Src/petsc-dev/include",
-					"/Users/barrysmith/Src/petsc-dev/include/mpiuni",
-					"/Users/barrysmith/Src/petsc-dev/arch-uni/include",
+					"$(SRCROOT)/../../include",
+					"$(SRCROOT)/../../include/mpiuni",
+					"$(SRCROOT)/../../arch-uni/include",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
@@ -2109,11 +2109,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Users/barrysmith/Src/petsc-dev/include",
-					"/Users/barrysmith/Src/petsc-dev/include/mpiuni",
-					"/Users/barrysmith/Src/petsc-dev/arch-uni/include",
+					"$(SRCROOT)/../../include",
+					"$(SRCROOT)/../../include/mpiuni",
+					"$(SRCROOT)/../../arch-uni/include",
 				);
-				LIBRARY_SEARCH_PATHS = "/Users/barrysmith/Src/petsc-dev/externalpackages/f2cblaslapack-3.1.1/blas";
+				LIBRARY_SEARCH_PATHS = 0;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.2;
