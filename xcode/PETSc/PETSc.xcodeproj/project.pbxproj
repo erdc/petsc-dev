@@ -225,7 +225,6 @@
 		D8099527119E428A00C5B516 /* iguess.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099348119E428A00C5B516 /* iguess.c */; };
 		D8099528119E428A00C5B516 /* ij.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099349119E428A00C5B516 /* ij.c */; };
 		D8099529119E428A00C5B516 /* ilu.c in Sources */ = {isa = PBXBuildFile; fileRef = D809934A119E428A00C5B516 /* ilu.c */; };
-		D809952A119E428A00C5B516 /* ilut.c in Sources */ = {isa = PBXBuildFile; fileRef = D809934B119E428A00C5B516 /* ilut.c */; };
 		D809952B119E428A00C5B516 /* index.c in Sources */ = {isa = PBXBuildFile; fileRef = D809934C119E428A00C5B516 /* index.c */; };
 		D809952C119E428A00C5B516 /* inherit.c in Sources */ = {isa = PBXBuildFile; fileRef = D809934D119E428A00C5B516 /* inherit.c */; };
 		D809952D119E428A00C5B516 /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = D809934E119E428A00C5B516 /* init.c */; };
@@ -311,7 +310,6 @@
 		D809957D119E428A00C5B516 /* mtr.c in Sources */ = {isa = PBXBuildFile; fileRef = D809939E119E428A00C5B516 /* mtr.c */; };
 		D809957E119E428A00C5B516 /* multequal.c in Sources */ = {isa = PBXBuildFile; fileRef = D809939F119E428A00C5B516 /* multequal.c */; };
 		D809957F119E428A00C5B516 /* nash.c in Sources */ = {isa = PBXBuildFile; fileRef = D80993A0119E428A00C5B516 /* nash.c */; };
-		D8099580119E428A00C5B516 /* ngmres.c in Sources */ = {isa = PBXBuildFile; fileRef = D80993A1119E428A00C5B516 /* ngmres.c */; };
 		D8099581119E428A00C5B516 /* nn.c in Sources */ = {isa = PBXBuildFile; fileRef = D80993A2119E428A00C5B516 /* nn.c */; };
 		D8099582119E428A00C5B516 /* none.c in Sources */ = {isa = PBXBuildFile; fileRef = D80993A3119E428A00C5B516 /* none.c */; };
 		D8099583119E428A00C5B516 /* normm.c in Sources */ = {isa = PBXBuildFile; fileRef = D80993A4119E428A00C5B516 /* normm.c */; };
@@ -460,7 +458,6 @@
 		D8099612119E428A00C5B516 /* tsfd.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099433119E428A00C5B516 /* tsfd.c */; };
 		D8099613119E428A00C5B516 /* tsreg.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099434119E428A00C5B516 /* tsreg.c */; };
 		D8099614119E428A00C5B516 /* tsregall.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099435119E428A00C5B516 /* tsregall.c */; };
-		D8099615119E428A00C5B516 /* unary.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099436119E428A00C5B516 /* unary.c */; };
 		D8099616119E428A00C5B516 /* vcreatea.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099437119E428A00C5B516 /* vcreatea.c */; };
 		D8099617119E428A00C5B516 /* veccreate.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099438119E428A00C5B516 /* veccreate.c */; };
 		D8099618119E428A00C5B516 /* vecio.c in Sources */ = {isa = PBXBuildFile; fileRef = D8099439119E428A00C5B516 /* vecio.c */; };
@@ -709,7 +706,6 @@
 		D8099348119E428A00C5B516 /* iguess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = iguess.c; sourceTree = "<group>"; };
 		D8099349119E428A00C5B516 /* ij.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ij.c; sourceTree = "<group>"; };
 		D809934A119E428A00C5B516 /* ilu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ilu.c; sourceTree = "<group>"; };
-		D809934B119E428A00C5B516 /* ilut.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ilut.c; sourceTree = "<group>"; };
 		D809934C119E428A00C5B516 /* index.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = index.c; sourceTree = "<group>"; };
 		D809934D119E428A00C5B516 /* inherit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inherit.c; sourceTree = "<group>"; };
 		D809934E119E428A00C5B516 /* init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = init.c; sourceTree = "<group>"; };
@@ -795,7 +791,6 @@
 		D809939E119E428A00C5B516 /* mtr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mtr.c; sourceTree = "<group>"; };
 		D809939F119E428A00C5B516 /* multequal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = multequal.c; sourceTree = "<group>"; };
 		D80993A0119E428A00C5B516 /* nash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nash.c; sourceTree = "<group>"; };
-		D80993A1119E428A00C5B516 /* ngmres.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ngmres.c; sourceTree = "<group>"; };
 		D80993A2119E428A00C5B516 /* nn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nn.c; sourceTree = "<group>"; };
 		D80993A3119E428A00C5B516 /* none.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = none.c; sourceTree = "<group>"; };
 		D80993A4119E428A00C5B516 /* normm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = normm.c; sourceTree = "<group>"; };
@@ -944,7 +939,6 @@
 		D8099433119E428A00C5B516 /* tsfd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tsfd.c; sourceTree = "<group>"; };
 		D8099434119E428A00C5B516 /* tsreg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tsreg.c; sourceTree = "<group>"; };
 		D8099435119E428A00C5B516 /* tsregall.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tsregall.c; sourceTree = "<group>"; };
-		D8099436119E428A00C5B516 /* unary.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unary.c; sourceTree = "<group>"; };
 		D8099437119E428A00C5B516 /* vcreatea.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vcreatea.c; sourceTree = "<group>"; };
 		D8099438119E428A00C5B516 /* veccreate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = veccreate.c; sourceTree = "<group>"; };
 		D8099439119E428A00C5B516 /* vecio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vecio.c; sourceTree = "<group>"; };
@@ -1239,7 +1233,6 @@
 				D8099348119E428A00C5B516 /* iguess.c */,
 				D8099349119E428A00C5B516 /* ij.c */,
 				D809934A119E428A00C5B516 /* ilu.c */,
-				D809934B119E428A00C5B516 /* ilut.c */,
 				D809934C119E428A00C5B516 /* index.c */,
 				D809934D119E428A00C5B516 /* inherit.c */,
 				D809934E119E428A00C5B516 /* init.c */,
@@ -1325,7 +1318,6 @@
 				D809939E119E428A00C5B516 /* mtr.c */,
 				D809939F119E428A00C5B516 /* multequal.c */,
 				D80993A0119E428A00C5B516 /* nash.c */,
-				D80993A1119E428A00C5B516 /* ngmres.c */,
 				D80993A2119E428A00C5B516 /* nn.c */,
 				D80993A3119E428A00C5B516 /* none.c */,
 				D80993A4119E428A00C5B516 /* normm.c */,
@@ -1474,7 +1466,6 @@
 				D8099433119E428A00C5B516 /* tsfd.c */,
 				D8099434119E428A00C5B516 /* tsreg.c */,
 				D8099435119E428A00C5B516 /* tsregall.c */,
-				D8099436119E428A00C5B516 /* unary.c */,
 				D8099437119E428A00C5B516 /* vcreatea.c */,
 				D8099438119E428A00C5B516 /* veccreate.c */,
 				D8099439119E428A00C5B516 /* vecio.c */,
@@ -1503,7 +1494,7 @@
 				D8099450119E428A00C5B516 /* zoom.c */,
 			);
 			name = "xcode-links";
-			path = "../../arch-uni/xcode-links";
+			path = "../../arch-iphone/xcode-links";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -1779,7 +1770,6 @@
 				D8099527119E428A00C5B516 /* iguess.c in Sources */,
 				D8099528119E428A00C5B516 /* ij.c in Sources */,
 				D8099529119E428A00C5B516 /* ilu.c in Sources */,
-				D809952A119E428A00C5B516 /* ilut.c in Sources */,
 				D809952B119E428A00C5B516 /* index.c in Sources */,
 				D809952C119E428A00C5B516 /* inherit.c in Sources */,
 				D809952D119E428A00C5B516 /* init.c in Sources */,
@@ -1865,7 +1855,6 @@
 				D809957D119E428A00C5B516 /* mtr.c in Sources */,
 				D809957E119E428A00C5B516 /* multequal.c in Sources */,
 				D809957F119E428A00C5B516 /* nash.c in Sources */,
-				D8099580119E428A00C5B516 /* ngmres.c in Sources */,
 				D8099581119E428A00C5B516 /* nn.c in Sources */,
 				D8099582119E428A00C5B516 /* none.c in Sources */,
 				D8099583119E428A00C5B516 /* normm.c in Sources */,
@@ -2014,7 +2003,6 @@
 				D8099612119E428A00C5B516 /* tsfd.c in Sources */,
 				D8099613119E428A00C5B516 /* tsreg.c in Sources */,
 				D8099614119E428A00C5B516 /* tsregall.c in Sources */,
-				D8099615119E428A00C5B516 /* unary.c in Sources */,
 				D8099616119E428A00C5B516 /* vcreatea.c in Sources */,
 				D8099617119E428A00C5B516 /* veccreate.c in Sources */,
 				D8099618119E428A00C5B516 /* vecio.c in Sources */,
@@ -2092,7 +2080,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../include",
 					"$(SRCROOT)/../../include/mpiuni",
-					"$(SRCROOT)/../../arch-uni/include",
+					"$(SRCROOT)/../../arch-iphone/include",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
@@ -2111,7 +2099,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../include",
 					"$(SRCROOT)/../../include/mpiuni",
-					"$(SRCROOT)/../../arch-uni/include",
+					"$(SRCROOT)/../../arch-iphone/include",
 				);
 				LIBRARY_SEARCH_PATHS = 0;
 				OTHER_LDFLAGS = "-ObjC";
