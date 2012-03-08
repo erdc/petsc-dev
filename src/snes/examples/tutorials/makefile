@@ -14,7 +14,7 @@ EXAMPLESC	 = ex1.c ex2.c ex3.c ex4.c ex5.c ex5s.c ex6.c ex7.c ex8.c \
                 ex23.c ex24.c ex25.c ex26.c  ex28.c ex29.c ex30.c ex31.c \
                 ex32.c ex35.c ex38.c ex42.c ex43.c ex44.c ex45.c ex46.c ex48.c ex49.c \
                 ex50.c ex51.c ex52.c ex53.c ex54.c ex55.c ex58.c ex59.c ex60.c \
-                ex61.c ex61gen.c ex61view.c ex63.c ex633D_DB.c ex64.c ex65.c
+                ex61.c ex61gen.c ex61view.c ex62.c ex63.c ex633D_DB.c ex64.c ex65.c
 EXAMPLESF	 = ex1f.F ex5f.F ex5f90.F ex5f90t.F ex5fs.F ex39f90.F ex40f90.F
 EXAMPLESCH	 = ex43-44.h
 EXAMPLESFH       = ex5f.h
@@ -399,7 +399,7 @@ runex5_5_fas:
 
 runex5_5_fas_additive:
 	-@./ex5 -fas_coarse_smoother_type ls -fas_coarse_pc_type lu -fas_coarse_ksp_type preonly -snes_rtol 1.e-12 -snes_monitor_short -snes_type fas \
-           -fas_coarse_ksp_type richardson -da_refine 6 -snes_fas_type additive \
+           -fas_coarse_ksp_type richardson -da_refine 6 -snes_fas_type additive -snes_max_it 50 \
            > ex5_5_fas_additive.tmp 2>&1; \
 	   if (${DIFF} output/ex5_5_fas_additive.out ex5_5_fas_additive.tmp) then true; \
 	   else  echo  ${PWD} "\nPossible problem with with ex5_5_fas_additive, diffs above \n========================================="; fi; \

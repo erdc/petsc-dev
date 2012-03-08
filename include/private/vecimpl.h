@@ -11,6 +11,19 @@
 #include <petscvec.h>
 PETSC_EXTERN_CXX_BEGIN
 
+/*S  PetscThreadsLayout - defines layout of vectors and matrices across threads (which rows are assigned to which threads)
+
+     Level: developer
+
+S*/
+typedef struct _n_PetscThreadsLayout* PetscThreadsLayout;
+struct _n_PetscThreadsLayout{
+  PetscInt nthreads;        /* Number of threads used for vector/matrix operations */
+  PetscInt N;               /* global size = sum(local sizes of all threads)  */
+  PetscInt *trstarts;       /* local start for each thread */
+  PetscInt *affinity;       /* Core affinity of each thread */
+};
+
 /*S
      PetscLayout - defines layout of vectors and matrices across processes (which rows are owned by which processes)
 
@@ -29,12 +42,13 @@ struct _n_PetscLayout{
   PetscInt               refcnt;      /* MPI Vecs obtained with VecDuplicate() and from MatGetVecs() reuse map of input object */
   ISLocalToGlobalMapping mapping;     /* mapping used in Vec/MatSetValuesLocal() */
   ISLocalToGlobalMapping bmapping;    /* mapping used in Vec/MatSetValuesBlockedLocal() */
+  PetscThreadsLayout     tmap;        /* threads specific  layout info */
 };
 
 extern PetscErrorCode PetscLayoutCreate(MPI_Comm,PetscLayout*);
 extern PetscErrorCode PetscLayoutSetUp(PetscLayout);
 extern PetscErrorCode PetscLayoutDestroy(PetscLayout*);
-extern PetscErrorCode PetscLayoutCopy(PetscLayout,PetscLayout*);
+extern PetscErrorCode PetscLayoutDuplicate(PetscLayout,PetscLayout*);
 extern PetscErrorCode PetscLayoutReference(PetscLayout,PetscLayout*);
 extern PetscErrorCode  PetscLayoutSetLocalSize(PetscLayout,PetscInt);
 extern PetscErrorCode  PetscLayoutGetLocalSize(PetscLayout,PetscInt *);
@@ -48,6 +62,12 @@ extern PetscErrorCode  PetscLayoutGetRange(PetscLayout,PetscInt *,PetscInt *);
 extern PetscErrorCode  PetscLayoutGetRanges(PetscLayout,const PetscInt *[]);
 extern PetscErrorCode  PetscLayoutSetISLocalToGlobalMapping(PetscLayout,ISLocalToGlobalMapping);
 extern PetscErrorCode  PetscLayoutSetISLocalToGlobalMappingBlock(PetscLayout,ISLocalToGlobalMapping);
+
+extern PetscErrorCode PetscThreadsLayoutCreate(PetscThreadsLayout*);
+extern PetscErrorCode PetscThreadsLayoutDestroy(PetscThreadsLayout*);
+extern PetscErrorCode PetscThreadsLayoutSetNThreads(PetscThreadsLayout,PetscInt);
+extern PetscErrorCode PetscThreadsLayoutSetThreadAffinities(PetscThreadsLayout, PetscInt[]);
+extern PetscErrorCode PetscThreadsLayoutSetUp(PetscThreadsLayout);
 
 #undef __FUNCT__
 #define __FUNCT__ "PetscLayoutFindOwner"
