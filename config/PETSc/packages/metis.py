@@ -36,7 +36,7 @@ class Configure(PETSc.package.NewPackage):
     args.append('-DGKLIB_PATH=../GKlib') # assumes that the 'build' folder is only one directory down
 
     self.framework.pushLanguage('C')
-    args.append('-DCMAKE_C_COMPILER="'+self.framework.getCompiler()+'"')
+    #args.append('-DCMAKE_C_COMPILER="'+self.framework.getCompiler()+'"')
     args.append('-DCMAKE_AR='+self.setCompilers.AR)
     ranlib = shlex.split(self.setCompilers.RANLIB)[0]
     args.append('-DCMAKE_RANLIB='+ranlib)
