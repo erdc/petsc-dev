@@ -1,3 +1,3 @@
 [submodule "config/BuildSystem"]
 	path = config/BuildSystem
-	url = git@github.com:erdc-cm/petsc-BuildSystem.git
+	url = git@github.com:erdc/petsc-BuildSystem.git
